@@ -38,7 +38,10 @@ function onGridLoad(){
 }
 
 function readDomNode(node){
-    alert(node.classList);
+    if(node.classList && node.classList.contains('grid-container'))
+        alert(node.classList);
+    if(node.classList && node.classList.contains('grid-element'))
+        alert(node.classList)
 }
 
 
