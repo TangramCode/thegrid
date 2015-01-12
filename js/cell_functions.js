@@ -2,13 +2,19 @@
  * Created by mj on 2015-01-12.
  */
 
-var GRAVITY_X = "LEFT";
-var GRAVITY_Y = "TOP";
+var gravity_x = "left";
+var gravity_y = "top";
+var width;
 var node;
 
 function getCellNode(node) {
     this.node = node;
-    alert(node.classList);
+    getGravity();
 }
 
-
+function getGravity() {
+    var gravity = node.getAttribute("g-gravity");
+    var res = gravity.split("|");
+    gravity_x = res[1];
+    gravity_y = res[0];
+}

@@ -24,7 +24,7 @@ function processGridContainer(node){
 
 function readDomNode(node) {
     if (node.classList && node.classList.contains('grid-container')) {
-        alert(node.classList);
+        //alert(node.classList);
         processGridContainer(node);
 
     }
