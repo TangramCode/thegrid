@@ -9,7 +9,7 @@ var height;
 var node;
 var col_x;
 var col_y;
-var margins = new Array(4);
+var margins = [0,0,0,0];
 var TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT=3;
 
 function getCellNode(node) {
@@ -65,28 +65,45 @@ function calculateVerticalGravity() {
         top+= height * CELL_FULL_HEIGHT /2;
         node.style.top = Math.floor(top)+"px";
     }
+}
 
+function calculateMargins() {
+    if(node.style.top) {
+        var margin = margins[TOP]/100 * window.innerHeight;
+        node.style.top = Math.floor(col_y * CELL_FULL_HEIGHT + margin)+"px";
+        if(height!=="auto") {
+            node.style.height = Math.floor(height * CELL_FULL_HEIGHT - 2*margin)+"px";
+        }
+
+    }
+    if(node.style.bottom)
+        //TODO:
+    if(node.style.top)
+        //TODO:
+    if(node.style.left) {
+        var margin = margins[LEFT]/100 * window.innerWidth;
+        node.style.left = Math.floor(col_x * CELL_FULL_WIDTH + margin)+"px";
+        if(width!=="auto")
+            node.style.width = Math.floor(width * CELL_FULL_WIDTH - 2*margin)+"px";
+    }
 
 }
+
 function calculatePositionAndDimension() {
     if(width==="auto")
         node.style.width = "auto";
     else
-        node.style.width = width * CELL_FULL_WIDTH+"px";
+        node.style.width = Math.floor(width * CELL_FULL_WIDTH)+"px";
 
     if(height==="auto")
         node.style.height = "auto";
     else
-        node.style.height = height * CELL_FULL_HEIGHT+"px";
+        node.style.height = Math.floor(height * CELL_FULL_HEIGHT)+"px";
+
 
     calculateHorizontalGravity();
     calculateVerticalGravity();
-
-
-
-
-
-
+    calculateMargins();
 
 
 }
