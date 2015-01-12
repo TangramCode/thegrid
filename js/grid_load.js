@@ -39,3 +39,10 @@ function readDomNode(node) {
 this.window.onload = walkDOM(document.body,function(node) {
     readDomNode(node);
 });
+
+this.window.onresize = function() {
+    onGridLoad(); //reaload
+    walkDOM(document.body,function(node) {
+        readDomNode(node);
+    });
+}
