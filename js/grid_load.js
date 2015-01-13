@@ -40,9 +40,11 @@ var Container = function(node) {
 var grid = new Grid();
 
 window.onload = function() {
+    onGridLoad();
     grid.walkDOM(document.body);
 };
 
 window.onresize = function() {
+    onGridLoad();
     grid.walkDOM(document.body);
 };

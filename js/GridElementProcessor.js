@@ -83,7 +83,7 @@ var GridElement = function(node){
         }
 
         if(node.style.right) {
-            var margin = margins[BOTTOM]/100 * window.innerWidth;
+            var margin = margins[RIGHT]/100 * window.innerWidth;
             node.style.right = Math.floor(getPixelValue(node.style.right) + margin)+"px";
             if(width!=="auto") {
                 node.style.width = Math.floor(node.offsetWidth - 2*margin)+"px";

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+    <style type="text/css">
+        .body {
+            position: relative;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .grid-container {
+            position: absolute;
+            top: 2%;
+            left: 2%;
+            width: 96%;
+            height: 96%;
+           # border: 1px solid red;
+        }
+
+        .grid-element {
+            position: absolute;
+            /*background-color: red;*/
+        }
+
+
+        .strip {
+            background-color: #000;
+            opacity: 0.8;
+        }
+
+        .text-small {
+            font-size: 18px;
+        }
+
+        .text-big {
+            font-size: 36px;
+        }
+
+        .text-wrapper {
+            display: table;
+            height: 100%;
+            width: 100%;
+        }
+
+        .text-wrapper > * {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .text-top {
+            vertical-align: top !important;
+        }
+
+        .lefty {
+            text-align: right;
+        }
+
+        .righty {
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .button {
+            width: 100%;
+            height: 100%;
+            color: white;
+            background-color: #00adee;
+            border-radius: 50px;
+            text-align: center;
+        }
+
+        .aspect-x-image {
+            height: 100%;
+            position: absolute;
+        }
+        .aspect-y-image{
+            width:100%;
+            position: absolute;
+        }
+
+        .white{
+            color:white;
+        }
+
+        .background{
+            position: absolute;
+            top: 9%;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: url(./img/login_background.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="background"></div>
+<div class="grid-container" g-cols="12" g-rows="17">
+    <div class="grid-element " g-width="auto" g-height="1" g-col-x="0" g-col-y="0" g-gravity="top|left"
+         g-margins="0 0 0 0.5">
+        <img class="aspect-x-image" src="img/me_there_logo.png">
+    </div>
+    <div class="grid-element " g-width="auto" g-height="1" g-col-x="1" g-col-y="0" g-gravity="top|left"
+         g-margins="0 0 0 0.5">
+        <div class="text-wrapper">
+            <span class="text-small">About</span>
+        </div>
+    </div>
+    <div class="grid-element " g-width="auto" g-height="1" g-col-x="2" g-col-y="0" g-gravity="top|left"
+         g-margins="0 0 0 0.5">
+        <div class="text-wrapper">
+            <span class="text-small">Contact</span>
+        </div>
+    </div>
+    <div class="grid-element " g-width="1" g-height="1" g-col-x="11" g-col-y="0" g-gravity="top|center_horizontal">
+        <div class="text-wrapper">
+            <span class="text-small center">|</span>
+        </div>
+    </div>
+    <div class="grid-element " g-width="1" g-height="1" g-col-x="10" g-col-y="1" g-gravity="bottom|right"
+         g-margins="0 0.5 0 0">
+        <div class="text-wrapper">
+            <span class="text-small lefty">Sign In</span>
+        </div>
+    </div>
+    <div class="grid-element " g-width="auto" g-height="1" g-col-x="11" g-col-y="0" g-gravity="top|left"
+         g-margins="0 0 0 0.5">
+        <div class="text-wrapper">
+            <span class="text-small righty">Sign Out</span>
+        </div>
+    </div>
+    <div class="grid-element " g-width="1" g-height="auto" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal">
+        <img class="aspect-y-image" src="img/me_there_logo.png">
+    </div>
+    <div class="grid-element strip" g-width="12" g-height="6" g-col-x="0" g-col-y="5" g-gravity="top|left"
+            g-margins="0 -2 0 -2"
+            >
+
+    </div>
+    <div class="grid-element " g-width="8" g-height="1" g-col-x="2" g-col-y="6" g-gravity="top|left"
+         g-margins="0.5 0 0 0">
+        <div class="text-wrapper">
+            <div class="text-big center text-top white">Request an appointment now</div>
+        </div>
+    </div>
+    <div class="grid-element " g-width="8" g-height="1" g-col-x="2" g-col-y="7" g-gravity="top|left">
+        <div class="text-wrapper">
+            <div class="text-big center text-top white">and your doctor will be there, wherever you are.</div>
+        </div>
+    </div>
+    <div class="grid-element " g-width="4" g-height="2" g-col-x="4" g-col-y="8" g-gravity="top|left"
+         g-margins="0.5 0.5 0.5 0.5">
+        <div class="button">
+            <div class="text-wrapper">
+                <div class="text-big center "> Request Session</div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-element " g-width="4" g-height="auto" g-col-x="6" g-col-y="16" g-gravity="bottom|center_horizontal"
+         g-margins="0 0 0.5 0">
+        <div class="text-small center white"> we're eager to help you!</div>
+    </div>
+
+</div>
+
+<script src="js/vendor/jquery-1.10.2.min.js"/>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+<script src="js/grid_values.js"></script>
+<script src="js/cell_functions.js"></script>
+<script src="js/GridElementProcessor.js"></script>
+<script src="js/grid_load.js"></script>
+</body>
+</html>
