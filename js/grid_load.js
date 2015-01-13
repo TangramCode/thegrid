@@ -13,7 +13,7 @@ var Grid = function() {
         if (node.classList && node.classList.contains('grid-element')) {
             getCellNode(node);
         }
-    }
+    };
 
     Grid.prototype.walkDOM = function (node) {
         readDomNode(node);
@@ -26,23 +26,22 @@ var Grid = function() {
 };
 
 var Container = function(node) {
-    this.node = node;
 
     Container.prototype.processGridContainer = function() {
-        var cols = this.node.getAttribute('g-cols');
-        var rows = this.node.getAttribute('g-rows');
+        var cols = node.getAttribute('g-cols');
+        var rows = node.getAttribute('g-rows');
 
-        this.node.width = parseInt(cols) * CELL_FULL_WIDTH;
-        this.node.height = parseInt(rows) * CELL_FULL_HEIGHT;
+        node.width = parseInt(cols) * CELL_FULL_WIDTH;
+        node.height = parseInt(rows) * CELL_FULL_HEIGHT;
     };
 };
 
 var grid = new Grid();
 
-this.window.onload = function() {
+window.onload = function() {
     grid.walkDOM(document.body);
 };
 
-this.window.onresize = function() {
+window.onresize = function() {
     grid.walkDOM(document.body);
-}
+};
