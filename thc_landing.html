@@ -89,17 +89,21 @@
             height: 100%;
             color: white;
             background-color: #00adee;
-            border-radius: 50px;
+            border-radius: 5vmin;
             text-align: center;
         }
 
+        .image-wrapper {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
         .aspect-x-image {
             height: 100%;
             position: absolute;
         }
         .aspect-y-image{
-            width:100%;
-            position: absolute;
+            width: 14vmin;
         }
 
         .white{
@@ -151,23 +155,25 @@
     </div>
     <div class="grid-element " g-width="1" g-height="1" g-col-x="11" g-col-y="0" g-gravity="top|center_horizontal">
         <div class="text-wrapper">
-            <span class="text-small center">|</span>
+            <div class="text-small center">|</div>
         </div>
     </div>
-    <div class="grid-element " g-width="1" g-height="1" g-col-x="10" g-col-y="1" g-gravity="bottom|right"
+    <div class="grid-element " g-width="1" g-height="1" g-col-x="10" g-col-y="0" g-gravity="top|right"
          g-margins="0 0.5 0 0">
         <div class="text-wrapper">
-            <span class="text-small lefty">Sign In</span>
+            <div class="text-small lefty">Sign In</div>
         </div>
     </div>
     <div class="grid-element " g-width="auto" g-height="1" g-col-x="11" g-col-y="0" g-gravity="top|left"
          g-margins="0 0 0 0.5">
         <div class="text-wrapper">
-            <span class="text-small righty">Sign Out</span>
+            <div class="text-small righty">Sign Out</div>
         </div>
     </div>
     <div class="grid-element " g-width="1" g-height="auto" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal">
-        <img class="aspect-y-image" src="img/me_there_logo.png">
+        <div class="image-wrapper">
+            <img class="aspect-y-image" src="img/me_there_logo.png">
+        </div>
     </div>
     <div class="grid-element strip" g-width="12" g-height="6" g-col-x="0" g-col-y="5" g-gravity="top|left"
             g-margins="0 -2 0 -2"
