@@ -12,7 +12,7 @@ var col_y;
 var margins = [0,0,0,0];
 var TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT=3;
 
-function getCellNode(node) {
+function processGridCell(node) {
     this.node = node;
     getGravity();
     getAttributes();

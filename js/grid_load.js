@@ -23,6 +23,7 @@ function processGridContainer(node){
 }
 
 function readDomNode(node) {
+
     if (node.classList && node.classList.contains('grid-container')) {
         //alert(node.classList);
         processGridContainer(node);
@@ -30,7 +31,8 @@ function readDomNode(node) {
     }
 
     if (node.classList && node.classList.contains('grid-element')) {
-        getCellNode(node);
+        var processor = new GridElementProcessor(node);
+        processor.process();
     }
 }
 
