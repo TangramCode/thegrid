@@ -2,47 +2,47 @@
  * Created by mj on 2015-01-12.
  */
 
-var walkDOM = function (node,func) {
-    func(node);
-    node = node.firstChild;
-    while(node) {
-        walkDOM(node,func);
-        node = node.nextSibling;
+var Grid = function() {
+
+    var readDomNode = function(node) {
+        if (node.classList && node.classList.contains('grid-container')) {
+            var container = new Container(node);
+            container.processGridContainer();
+        }
+
+        if (node.classList && node.classList.contains('grid-element')) {
+            getCellNode(node);
+        }
     }
 
+    Grid.prototype.walkDOM = function (node) {
+        readDomNode(node);
+        node = node.firstChild;
+        while(node) {
+            Grid.prototype.walkDOM(node);
+            node = node.nextSibling;
+        }
+    };
 };
 
-function processGridContainer(node){
-    var cols = node.getAttribute('g-cols');
-    var rows = node.getAttribute('g-rows');
+var Container = function(node) {
+    this.node = node;
 
-    node.width = parseInt(cols) * CELL_FULL_WIDTH;
-    node.height = parseInt(rows) * CELL_FULL_HEIGHT;
+    Container.prototype.processGridContainer = function() {
+        var cols = this.node.getAttribute('g-cols');
+        var rows = this.node.getAttribute('g-rows');
 
+        this.node.width = parseInt(cols) * CELL_FULL_WIDTH;
+        this.node.height = parseInt(rows) * CELL_FULL_HEIGHT;
+    };
+};
 
-}
+var grid = new Grid();
 
-function readDomNode(node) {
-    if (node.classList && node.classList.contains('grid-container')) {
-        //alert(node.classList);
-        processGridContainer(node);
-
-    }
-
-    if (node.classList && node.classList.contains('grid-element')) {
-        getCellNode(node);
-    }
-}
-
-
-
-this.window.onload = walkDOM(document.body,function(node) {
-    readDomNode(node);
-});
+this.window.onload = function() {
+    grid.walkDOM(document.body);
+};
 
 this.window.onresize = function() {
-    onGridLoad(); //reaload
-    walkDOM(document.body,function(node) {
-        readDomNode(node);
-    });
+    grid.walkDOM(document.body);
 }
