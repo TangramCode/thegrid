@@ -11,7 +11,8 @@ var Grid = function() {
         }
 
         if (node.classList && node.classList.contains('grid-element')) {
-            getCellNode(node);
+            var element = new GridElement(node);
+            element.process();
         }
     }
 

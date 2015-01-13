@@ -3,7 +3,8 @@
  */
 
 
-function GridElementProcessor(){
+var GridElement = function(node){
+    var node = node;
     var gravity_x = "left";
     var gravity_y = "top";
     var width;
@@ -14,14 +15,14 @@ function GridElementProcessor(){
     var margins = [0,0,0,0];
     var TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT=3;
 
-    function getGravity() {
+    var getGravity = function () {
         var gravity = node.getAttribute("g-gravity");
         var res = gravity.split("|");
         gravity_x = res[1];
         gravity_y = res[0];
     }
 
-    function getAttributes() {
+    var getAttributes = function() {
         width = node.getAttribute("g-width");
         height = node.getAttribute("g-height");
         col_x = node.getAttribute("g-col-x");
@@ -35,7 +36,7 @@ function GridElementProcessor(){
 
     }
 
-    function calculateHorizontalGravity() {
+    var calculateHorizontalGravity = function() {
         if(gravity_x==="left") {
             var left = col_x * CELL_FULL_WIDTH;
             node.style.left = Math.floor(left)+"px";
@@ -48,7 +49,7 @@ function GridElementProcessor(){
         }
     }
 
-    function calculateVerticalGravity() {
+    var calculateVerticalGravity = function() {
         if(gravity_y === "top"){
             var top = col_y * CELL_FULL_HEIGHT;
             node.style.top = Math.floor(top)+"px";
@@ -62,7 +63,8 @@ function GridElementProcessor(){
         }
     }
 
-    function calculateMargins() {
+    var calculateMargins = function() {
+/*
         if(node.style.top) {
             var margin = margins[TOP]/100 * window.innerHeight;
             node.style.top = Math.floor(col_y * CELL_FULL_HEIGHT + margin)+"px";
@@ -81,10 +83,11 @@ function GridElementProcessor(){
                     if(width!=="auto")
                         node.style.width = Math.floor(width * CELL_FULL_WIDTH - 2*margin)+"px";
                 }
+*/
 
     }
 
-    function calculatePositionAndDimension() {
+    var  calculatePositionAndDimension = function() {
         if(width==="auto")
             node.style.width = "auto";
         else
@@ -95,19 +98,16 @@ function GridElementProcessor(){
         else
             node.style.height = Math.floor(height * CELL_FULL_HEIGHT)+"px";
 
-
         calculateHorizontalGravity();
         calculateVerticalGravity();
         calculateMargins();
 
-
     }
 
 
-    GridElementProcessor.prototype.process = new function(node){
-        this.node = node;
-        this.getGravity();
-        this.getAttributes();
-        this.calculatePositionAndDimension();
+    GridElement.prototype.process = function(){
+        getGravity();
+        getAttributes();
+        calculatePositionAndDimension();
     };
-}
+};
