@@ -22,7 +22,9 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
     <script src="js/grid_values.js"></script>
+    <!-- https://github.com/eligrey/classList.js -->
     <script src="js/classList.js"></script>
+    <!--https://github.com/rodneyrehm/viewport-units-buggyfill*/-->
     <script src="js/viewport-units-buggyfill.js"></script>
     <script src="js/viewport-units-buggyfill.hacks.js"></script>
     <script src="js/cell_functions.js"></script>
@@ -30,6 +32,7 @@
     <script src="js/grid_load.js"></script>
 
     <style type="text/css">
+        @import url('http://fonts.googleapis.com/css?family=Open+Sans');
         body {
             position: relative;
             box-sizing: border-box;
@@ -60,13 +63,16 @@
         }
 
         .text-small {
+            font-family: 'Open Sans';
             font-size: 2.343vmin;
             content: 'viewport-units-buggyfill; font-size: 2.343vmin;';
         }
 
         .text-big {
+            font-family: 'Open Sans';
             font-size: 4.887vmin;
             content: 'viewport-units-buggyfill; font-size: 4.887vmin;';
+            line-height: 77%;
         }
 
         .text-wrapper {
@@ -103,21 +109,23 @@
             background-color: #00adee;
             border-radius: 5vmin;
             content: 'viewport-units-buggyfill; border-radius: 5vmin;';
+            font-weight: bold;
             text-align: center;
         }
 
         .image-wrapper {
             height: 100%;
-            width: 100%;
             text-align: center;
+            width: 14vmin;
+            content: 'viewport-units-buggyfill; width: 14vmin;';
         }
         .aspect-x-image {
             height: 100%;
             position: absolute;
         }
         .aspect-y-image{
-            width: 14vmin;
-            content: 'viewport-units-buggyfill; width: 14vmin;';
+            width: 100%;
+            height: auto;
         }
 
         .white{
@@ -136,12 +144,12 @@
         }
 
         .text-footer {
+            font-family: 'Open Sans';
             font-size:2.604vmin;
             content: 'viewport-units-buggyfill; font-size: 2.604vmin;';
-            font-weight: 600;
+            font-weight: 550;
         }
     </style>
-
 </head>
 <body>
 <!--[if lt IE 7]>
