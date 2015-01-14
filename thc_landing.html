@@ -18,9 +18,19 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/vendor/jquery-1.10.2.min.js"/>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/grid_values.js"></script>
+    <script src="js/classList.js"></script>
+    <script src="js/viewport-units-buggyfill.js"></script>
+    <script src="js/viewport-units-buggyfill.hacks.js"></script>
+    <script src="js/cell_functions.js"></script>
+    <script src="js/GridElementProcessor.js"></script>
+    <script src="js/grid_load.js"></script>
 
     <style type="text/css">
-        .body {
+        body {
             position: relative;
             box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -35,7 +45,7 @@
             left: 2%;
             width: 96%;
             height: 96%;
-           # border: 1px solid red;
+            /*border: 1px solid red;*/
         }
 
         .grid-element {
@@ -51,16 +61,12 @@
 
         .text-small {
             font-size: 2.343vmin;
-        <!--[if lt IE 9]>
-            font-size: 2.343vm;
-        <![endif]-->
+            content: 'viewport-units-buggyfill; font-size: 2.343vmin;';
         }
 
         .text-big {
             font-size: 4.887vmin;
-        <!--[if lt IE 9]>
-            font-size: 4.887vm;
-        <![endif]-->
+            content: 'viewport-units-buggyfill; font-size: 4.887vmin;';
         }
 
         .text-wrapper {
@@ -96,6 +102,7 @@
             color: white;
             background-color: #00adee;
             border-radius: 5vmin;
+            content: 'viewport-units-buggyfill; border-radius: 5vmin;';
             text-align: center;
         }
 
@@ -110,6 +117,7 @@
         }
         .aspect-y-image{
             width: 14vmin;
+            content: 'viewport-units-buggyfill; width: 14vmin;';
         }
 
         .white{
@@ -129,6 +137,7 @@
 
         .text-footer {
             font-size:2.604vmin;
+            content: 'viewport-units-buggyfill; font-size: 2.604vmin;';
             font-weight: 600;
         }
     </style>
@@ -211,14 +220,20 @@
     </div>
 
 </div>
+<script>
+    var grid = new Grid();
 
-<script src="js/vendor/jquery-1.10.2.min.js"/>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
-<script src="js/grid_values.js"></script>
-<script src="js/classList.js"></script>
-<script src="js/cell_functions.js"></script>
-<script src="js/GridElementProcessor.js"></script>
-<script src="js/grid_load.js"></script>
+    window.onload = function() {
+        window.viewportUnitsBuggyfill.init({hacks: window.viewportUnitsBuggyfillHacks});
+        onGridLoad();
+        grid.walkDOM(document.body);
+    };
+
+    window.onresize = function() {
+        onGridLoad();
+        grid.walkDOM(document.body);
+    };
+</script>
+
 </body>
 </html>
