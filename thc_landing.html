@@ -31,6 +31,9 @@
 
     <style type="text/css">
         @import url('http://fonts.googleapis.com/css?family=Open+Sans');
+        html {
+            font-size: 10px ;
+        }
         body {
             position: relative;
             box-sizing: border-box;
@@ -62,14 +65,12 @@
 
         .text-small {
             font-family: 'Open Sans';
-            font-size: 1.643vmin;
-            content: 'viewport-units-buggyfill; font-size: 1.643vmin;';
+            font-size: 1.643rem;
         }
 
         .text-big {
             font-family: 'Open Sans';
-            font-size: 4vmin;
-            content: 'viewport-units-buggyfill; font-size: 4vmin;';
+            font-size: 4.32rem;
             line-height: 77%;
         }
 
@@ -105,8 +106,7 @@
             height: 100%;
             color: white;
             background-color: #00adee;
-            border-radius: 4.3vmin;
-            content: 'viewport-units-buggyfill; border-radius: 4.3vmin;';
+            border-radius: 4.32rem;
             font-weight: bold;
             text-align: center;
         }
@@ -203,11 +203,13 @@
     window.onload = function() {
         window.viewportUnitsBuggyfill.init({hacks: window.viewportUnitsBuggyfillHacks});
         onGridLoad();
+        grid.calculateFontSize();
         grid.walkDOM(document.body);
     };
 
     window.onresize = function() {
         onGridLoad();
+        grid.calculateFontSize();
         grid.walkDOM(document.body);
     };
 </script>

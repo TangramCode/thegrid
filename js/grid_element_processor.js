@@ -119,7 +119,6 @@ var GridElement = function(node){
             newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
             verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - newHeight)/2);
         }
-        console.log(CELL_FULL_WIDTH/CELL_FULL_HEIGHT);
 
 
         node.style.width = newWidth+"px";

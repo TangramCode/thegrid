@@ -24,6 +24,14 @@ var Grid = function() {
             node = node.nextSibling;
         }
     };
+
+    Grid.prototype.calculateFontSize = function() {
+       if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT < HORIZONTAL_RATIO) {
+         document.getElementsByTagName("html")[0].style.fontSize = window.innerWidth /192+"px";
+       } else {
+         document.getElementsByTagName("html")[0].style.fontSize = window.innerHeight /108+"px";
+       }
+    };
 };
 
 var Container = function(node) {
