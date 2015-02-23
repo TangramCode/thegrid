@@ -22,9 +22,6 @@
     <script src="js/lib/plugins.js"></script>
     <!-- https://github.com/eligrey/classList.js -->
     <script src="js/lib/classList.js"></script>
-    <!--https://github.com/rodneyrehm/viewport-units-buggyfill*/-->
-    <script src="js/lib/viewport-units-buggyfill.js"></script>
-    <script src="js/lib/viewport-units-buggyfill.hacks.js"></script>
     <script src="js/grid_values.js"></script>
     <script src="js/grid_element_processor.js"></script>
     <script src="js/grid_load.js"></script>
@@ -74,7 +71,6 @@
         .text-footer {
             font-family: 'Open Sans';
             font-size:2rem;
-            content: 'viewport-units-buggyfill; font-size: 1.904vmin;';
             font-weight: 600;
         }
 
@@ -154,7 +150,12 @@
             opacity:0.7;
         }
 
-       
+       .bottom{
+        position: absolute;
+        left: 0;
+        right:0;
+        bottom:0;
+       }
     </style>
 </head>
 <body>
@@ -167,17 +168,17 @@
 <div class="background"></div>
 <div class="grid-container" g-cols="12" g-rows="17">
     <div class="grid-element" g-width="1" g-height="1" g-col-x="0" g-col-y="0" g-gravity="top|left"
-         g-paddings="0 0 0 0.5">
+         g-paddings="0 0 0 0.5" static="true">
         <img class="aspect-x-image" src="img/me_there_logo.png">
     </div>
     <div class="grid-element" g-width="1" g-height="1" g-col-x="1" g-col-y="0" g-gravity="top|left"
-         g-paddings="0 0 0 0.5">
-        <div class="text-wrapper">
+         g-paddings="0 0 0 0.5" static="true">
+        <div class="text-wrapper" >
             <span class="text-small">About</span>
         </div>
     </div>
     <div class="grid-element" g-width="1" g-height="1" g-col-x="2" g-col-y="0" g-gravity="top|left"
-         g-paddings="0 0 0 0.5">
+         g-paddings="0 0 0 0.5" static="true">
         <div class="text-wrapper">
             <span class="text-small">Contact</span>
         </div>
@@ -229,9 +230,9 @@
             </div>
         </div>
     </div>
-    <div class="grid-element" g-width="4" g-height="0.5" g-col-x="6" g-col-y="16" g-gravity="bottom|center_horizontal"
+    <div class="grid-element" g-width="4" g-height="1" g-col-x="6" g-col-y="16" g-gravity="bottom|center_horizontal"
          g-paddings="0 0 0.5 0" static ="true">
-        <div class="text-footer center white"> we're eager to help you!</div>
+        <div class="text-footer center white bottom"> we're eager to help you!</div>
     </div>
 
 
@@ -240,7 +241,6 @@
     var grid = new Grid();
 
     window.onload = function() {
-        window.viewportUnitsBuggyfill.init({hacks: window.viewportUnitsBuggyfillHacks});
         onGridLoad();
         grid.calculateFontSize();
         grid.walkDOM(document.body);
