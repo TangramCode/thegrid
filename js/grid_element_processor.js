@@ -10,6 +10,7 @@ var GridElement = function(node){
     var height;
     var col_x;
     var col_y;
+    var is_static = false;
     var paddings = [0,0,0,0];
     var TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT=3;
 
@@ -30,6 +31,7 @@ var GridElement = function(node){
         col_x = node.getAttribute("g-col-x");
         col_y = node.getAttribute("g-col-y");
         var temp_paddings = node.getAttribute("g-paddings");
+        is_static = node.getAttribute("static");
 
         if(temp_paddings){
             paddings = temp_paddings.split(" ");
@@ -38,6 +40,11 @@ var GridElement = function(node){
     };
 
     var calculateHorizontalGravity = function(horizontalGravityOffset) {
+        if(width ==='match_window'){
+            node.style.left = (-0.02 * window.innerWidth) +'px';
+            return;
+        }
+
         if(gravity_x==="left") {
             var left = col_x * CELL_FULL_WIDTH;
             node.style.left = Math.floor(left + horizontalGravityOffset)+"px";
@@ -89,36 +96,52 @@ var GridElement = function(node){
     };
 
     var  calculatePositionAndDimension = function() {
-        var widescreen;
         var verticalGravityOffset = 0;
         var horizontalGravityOffset = 0;
+        var newWidth;
 
-        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT >= 2.37)
-            widescreen =  true;
-        else
-            widescreen = false;
-
-        var newWidth = width * CELL_FULL_WIDTH;
+        if(width === 'match_window'){
+            
+            newWidth= window.innerWidth;
+        }else{
+            newWidth = width * CELL_FULL_WIDTH; 
+        }
+        
         var newHeight = height * CELL_FULL_HEIGHT;
 
-        if(widescreen) {
-            newWidth = CELL_FULL_HEIGHT*HORIZONTAL_RATIO*width;
-            horizontalGravityOffset = Math.floor((width * CELL_FULL_WIDTH - newWidth)/2);
-        } else {
-            newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
-            verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - newHeight)/2);
+        var dimensions = {"newWidth":newWidth, "newHeight": newHeight,
+             "horizontalGravityOffset": horizontalGravityOffset, "verticalGravityOffset":verticalGravityOffset, "widescreen":false};
+
+        if(!is_static){
+            dimensions = calculateDynamicDimensions(dimensions);
         }
 
+        node.style.width = Math.floor(dimensions.newWidth)+"px";
+        node.style.height = Math.floor(dimensions.newHeight)+"px";
 
-        node.style.width = newWidth+"px";
-
-        node.style.height = Math.floor(newHeight)+"px";
-
-        calculateHorizontalGravity(horizontalGravityOffset);
-        calculateVerticalGravity(verticalGravityOffset);
-        calculatePaddings(widescreen);
+        calculateHorizontalGravity(dimensions.horizontalGravityOffset);
+        calculateVerticalGravity(dimensions.verticalGravityOffset);
+        calculatePaddings(dimensions.widescreen);
 
     };
+
+    var calculateDynamicDimensions = function(dimensions){
+
+        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT >= 2.37)
+            dimensions.widescreen =  true;
+        else
+            dimensions.widescreen = false;
+
+        if(dimensions.widescreen) {
+            dimensions.newWidth = CELL_FULL_HEIGHT*HORIZONTAL_RATIO*width;
+            dimensions.horizontalGravityOffset = Math.floor((width * CELL_FULL_WIDTH - dimensions.newWidth)/2);
+        } else {
+            dimensions.newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
+            dimensions.verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - dimensions.newHeight)/2);
+        }
+
+        return dimensions;
+    }
 
 
     GridElement.prototype.process = function(){

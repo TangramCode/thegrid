@@ -68,13 +68,25 @@
 
         .text-small {
             font-family: 'Open Sans';
-            font-size: 1.643rem;
+            font-size: 1.8rem;
+        }
+
+        .text-footer {
+            font-family: 'Open Sans';
+            font-size:2rem;
+            content: 'viewport-units-buggyfill; font-size: 1.904vmin;';
+            font-weight: 600;
         }
 
         .text-big {
             font-family: 'Open Sans';
-            font-size: 4.32rem;
+            font-size: 3.6rem;
             line-height: 77%;
+        }
+
+         .text-button {
+            font-family: 'Open Sans';
+            font-size: 3rem;
         }
 
         .text-wrapper {
@@ -117,16 +129,14 @@
         .image-wrapper {
             height: 100%;
             text-align: center;
-            width: 13.3vmin;
-            content: 'viewport-units-buggyfill; width: 13.3vmin;';
         }
         .aspect-x-image {
             height: 100%;
-            position: absolute;
         }
-        .aspect-y-image{
-            width: 100%;
-            height: auto;
+        .logo{
+            width: auto;
+            height: 12rem;
+            text-align:center;
         }
 
         .white{
@@ -144,12 +154,7 @@
             opacity:0.7;
         }
 
-        .text-footer {
-            font-family: 'Open Sans';
-            font-size:1.904vmin;
-            content: 'viewport-units-buggyfill; font-size: 1.904vmin;';
-            font-weight: 600;
-        }
+       
     </style>
 </head>
 <body>
@@ -161,22 +166,49 @@
 <!-- Add your site or application content here -->
 <div class="background"></div>
 <div class="grid-container" g-cols="12" g-rows="17">
+    <div class="grid-element" g-width="1" g-height="1" g-col-x="0" g-col-y="0" g-gravity="top|left"
+         g-paddings="0 0 0 0.5">
+        <img class="aspect-x-image" src="img/me_there_logo.png">
+    </div>
+    <div class="grid-element" g-width="1" g-height="1" g-col-x="1" g-col-y="0" g-gravity="top|left"
+         g-paddings="0 0 0 0.5">
+        <div class="text-wrapper">
+            <span class="text-small">About</span>
+        </div>
+    </div>
+    <div class="grid-element" g-width="1" g-height="1" g-col-x="2" g-col-y="0" g-gravity="top|left"
+         g-paddings="0 0 0 0.5">
+        <div class="text-wrapper">
+            <span class="text-small">Contact</span>
+        </div>
+    </div>
 
     <div class="grid-element" g-width="1" g-height="1" g-col-x="11" g-col-y="0" g-gravity="top|center_horizontal">
         <div class="text-wrapper">
             <div class="text-small center">|</div>
         </div>
     </div>
-    <div class="grid-element" g-width="1" g-height="1" g-col-x="10" g-col-y="0" g-gravity="top|right"
-         g-paddings="0 0.5 0 0">
+    <div class="grid-element" g-width="1" g-height="1" g-col-x="10" g-col-y="0" g-gravity="top|left"
+         g-paddings="0 0.5 0 0" static="true">
         <div class="text-wrapper">
             <div class="text-small lefty">Sign In</div>
         </div>
     </div>
-    <div class="grid-element strip" g-width="12" g-height="6" g-col-x="0" g-col-y="5" g-gravity="top|left"
-            g-paddings="0 -2.1 0 -2"
+     <div class="grid-element" g-width="1" g-height="1" g-col-x="11" g-col-y="0" g-gravity="top|left"
+         g-paddings="0 0 0 0.5" static="true">
+        <div class="text-wrapper">
+            <div class="text-small righty">Sign Out</div>
+        </div>
+    </div>
+      <div class="grid-element" g-width="2" g-height="3" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal" g-paddings="0 0 0.5 0">
+        <div class="image-wrapper">
+            <img class="logo" src="img/me_there_logo.png">
+        </div>
+    </div>
+    <div class="grid-element strip" g-width="match_window" g-height="6" g-col-x="0" g-col-y="5" g-gravity="top|left"
+            g-paddings="0 0 0 0" static="true"
             >
-
+         
     </div>
     <div class="grid-element" g-width="12" g-height="1" g-col-x="0" g-col-y="6" g-gravity="top|left"
          g-paddings="0.5 0 0 0">
@@ -193,9 +225,13 @@
          g-paddings="0.5 0.5 0.5 0.5">
         <div class="button">
             <div class="text-wrapper">
-                <div class="text-big center "> Request Session</div>
+                <div class="text-button center "> Request Session</div>
             </div>
         </div>
+    </div>
+    <div class="grid-element" g-width="4" g-height="0.5" g-col-x="6" g-col-y="16" g-gravity="bottom|center_horizontal"
+         g-paddings="0 0 0.5 0" static ="true">
+        <div class="text-footer center white"> we're eager to help you!</div>
     </div>
 
 
