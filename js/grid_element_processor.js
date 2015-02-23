@@ -29,7 +29,6 @@ var GridElement = function(node){
         height = node.getAttribute("g-height");
         col_x = node.getAttribute("g-col-x");
         col_y = node.getAttribute("g-col-y");
-        console.log(width+"-"+height+"-"+col_x+"-"+col_y);
         var temp_margins = node.getAttribute("g-margins");
 
         if(temp_margins){
@@ -38,30 +37,30 @@ var GridElement = function(node){
 
     };
 
-    var calculateHorizontalGravity = function() {
+    var calculateHorizontalGravity = function(horizontalGravityOffset) {
         if(gravity_x==="left") {
             var left = col_x * CELL_FULL_WIDTH;
-            node.style.left = Math.floor(left)+"px";
+            node.style.left = Math.floor(left + horizontalGravityOffset)+"px";
         }  else if(gravity_x==="right") {
             var right = (node.parentNode.getAttribute("g-cols") - col_x - 1) * CELL_FULL_WIDTH;
-            node.style.right = Math.ceil(right)+"px";
+            node.style.right = Math.ceil(right - horizontalGravityOffset)+"px";
         }else if(gravity_x === "center_horizontal"){
             var left = col_x * CELL_FULL_WIDTH - (width * CELL_FULL_WIDTH)/2;
-            node.style.left = Math.floor(left)+"px";
+            node.style.left = Math.floor(left + horizontalGravityOffset)+"px";
         }
     };
 
-    var calculateVerticalGravity = function() {
+    var calculateVerticalGravity = function(verticalGravityOffset) {
         if(gravity_y === "top"){
             var top = col_y * CELL_FULL_HEIGHT;
-            node.style.top = Math.floor(top)+"px";
+            node.style.top = Math.floor(top + verticalGravityOffset)+"px";
         }else if(gravity_y ==="bottom"){
             var bottom = (node.parentNode.getAttribute("g-rows") - col_y - 1) * CELL_FULL_HEIGHT;
-            node.style.bottom = Math.ceil(bottom)+"px";
+            node.style.bottom = Math.ceil(bottom - verticalGravityOffset)+"px";
         }else if(gravity_y === "center_vertical"){
             var top = col_y * CELL_FULL_HEIGHT;
             top+= height * CELL_FULL_HEIGHT /2;
-            node.style.top = Math.floor(top)+"px";
+            node.style.top = Math.floor(top + verticalGravityOffset)+"px";
         }
     };
 
@@ -101,18 +100,34 @@ var GridElement = function(node){
     };
 
     var  calculatePositionAndDimension = function() {
-        if(width==="auto")
-            node.style.width = "auto";
-        else
-            node.style.width = Math.floor(width * CELL_FULL_WIDTH)+"px";
+        var widescreen;
+        var verticalGravityOffset = 0;
+        var horizontalGravityOffset = 0;
 
-        if(height==="auto")
-            node.style.height = "auto";
+        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT >= 2.37)
+            widescreen =  true;
         else
-            node.style.height = Math.floor(height * CELL_FULL_HEIGHT)+"px";
+            widescreen = false;
 
-        calculateHorizontalGravity();
-        calculateVerticalGravity();
+        var newWidth = width * CELL_FULL_WIDTH;
+        var newHeight = height * CELL_FULL_HEIGHT;
+
+        if(widescreen) {
+            newWidth = CELL_FULL_HEIGHT*HORIZONTAL_RATIO*width;
+            horizontalGravityOffset = Math.floor((width * CELL_FULL_WIDTH - newWidth)/2);
+        } else {
+            newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
+            verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - newHeight)/2);
+        }
+        console.log(CELL_FULL_WIDTH/CELL_FULL_HEIGHT);
+
+
+        node.style.width = newWidth+"px";
+
+        node.style.height = Math.floor(newHeight)+"px";
+
+        calculateHorizontalGravity(horizontalGravityOffset);
+        calculateVerticalGravity(verticalGravityOffset);
         calculateMargins();
 
     };

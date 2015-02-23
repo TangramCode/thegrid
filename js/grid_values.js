@@ -11,6 +11,9 @@ var CELL_OPEN_HEIGHT;
 
 var GUTTER = 0.05;
 
+var HORIZONTAL_RATIO = 2.37037;
+var VERTICAL_RATIO = 0.421875;
+
 function onGridLoad(){
 
     CELL_FULL_WIDTH = window.innerWidth * 0.96 /12;
