@@ -10,7 +10,7 @@ var GridElement = function(node){
     var height;
     var col_x;
     var col_y;
-    var margins = [0,0,0,0];
+    var paddings = [0,0,0,0];
     var TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT=3;
 
     var getPixelValue = function(value) {
@@ -29,10 +29,10 @@ var GridElement = function(node){
         height = node.getAttribute("g-height");
         col_x = node.getAttribute("g-col-x");
         col_y = node.getAttribute("g-col-y");
-        var temp_margins = node.getAttribute("g-margins");
+        var temp_paddings = node.getAttribute("g-paddings");
 
-        if(temp_margins){
-            margins = temp_margins.split(" ");
+        if(temp_paddings){
+            paddings = temp_paddings.split(" ");
         }
 
     };
@@ -64,39 +64,28 @@ var GridElement = function(node){
         }
     };
 
-    var calculateMargins = function() {
-
-        if(node.style.top) {
-            var margin = margins[TOP]/100 * window.innerHeight;
-            node.style.top = Math.floor(node.offsetTop + margin)+"px";
-            if(height!=="auto") {
-                node.style.height = Math.floor(node.offsetHeight - 2*margin)+"px";
-            }
-        }
-        if(node.style.bottom) {
-            var margin = margins[BOTTOM]/100 * window.innerHeight;
-            node.style.bottom = Math.floor(getPixelValue(node.style.bottom) + margin)+"px";
-            if(height!=="auto") {
-                node.style.height = Math.floor(node.offsetHeight - 2*margin)+"px";
-            }
-        }
-
-        if(node.style.right) {
-            var margin = margins[RIGHT]/100 * window.innerWidth;
-            node.style.right = Math.floor(getPixelValue(node.style.right) + margin)+"px";
-            if(width!=="auto") {
-                node.style.width = Math.floor(node.offsetWidth - 2*margin)+"px";
-            }
-        }
-
-        if(node.style.left) {
-            var margin = margins[LEFT]/100 * window.innerWidth;
-            node.style.left = Math.floor(node.offsetLeft + margin)+"px";
-            if(width!=="auto")
-                node.style.width = Math.floor(node.offsetWidth - 2*margin)+"px";
+    var calculatePaddings = function(widescreen) {
+        var paddingTop;
+        var paddingBottom;
+        var paddingLeft;
+        var paddingRight;
+        if(widescreen) {
+           paddingTop = paddings[TOP]/100 * window.innerHeight;
+           paddingBottom = paddings[BOTTOM]/100 * window.innerHeight;
+           paddingLeft = paddings[LEFT]/100 * window.innerHeight/9*16;
+           paddingRight = paddings[RIGHT]/100 * window.innerHeight/9*16;
+        } else {
+           paddingTop = paddings[TOP]/100 * window.innerWidth/16*9;
+           paddingBottom = paddings[BOTTOM]/100 * window.innerWidth/16*9;
+           paddingLeft = paddings[LEFT]/100 * window.innerWidth;
+           paddingRight = paddings[RIGHT]/100 * window.innerWidth;
         }
 
 
+        node.style.paddingTop = paddingTop+"px";
+        node.style.paddingRight = paddingRight+"px";
+        node.style.paddingBottom = paddingBottom+"px";
+        node.style.paddingLeft = paddingLeft+"px";
     };
 
     var  calculatePositionAndDimension = function() {
@@ -127,7 +116,7 @@ var GridElement = function(node){
 
         calculateHorizontalGravity(horizontalGravityOffset);
         calculateVerticalGravity(verticalGravityOffset);
-        calculateMargins();
+        calculatePaddings(widescreen);
 
     };
 
