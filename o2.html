@@ -77,12 +77,6 @@
         .text-pdf {
             left: calc(1rem + 5px);
         }
-        .big-sense-button {
-            width: 100%;
-            height: 100%;
-            border: 2px solid dodgerblue;
-            border-radius: 5rem;
-        }
         .relative-wrapper {
             position: relative;
             width: 100%;
@@ -103,6 +97,29 @@
         .download-icon {
             width: 1rem;
             float: left;
+        }
+        .big-sense-button {
+            width: 100%;
+            height: calc(100% - 6px);
+            border: 3px solid #42c6f3;
+            border-radius: 5rem;
+            text-align: center;
+        }
+        .big-sense-button > .image{
+            width: 2rem;
+            display: inline-block;
+        }
+        .big-sense-button > .text{
+            color: #42c6f3;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .big-sense-button > .trash {
+            height: 100%;
+            display: inline-block;;
+            vertical-align: middle;
+            padding-top: 5px;
         }
     </style>
 </head>
@@ -172,6 +189,11 @@
     <div class="grid-element " g-width="2" g-height="1" g-col-x="6" g-col-y="14" g-gravity="top|center_horizontal"
          g-paddings="0.5 2 0.5 2" >
          <div class="big-sense-button">
+             <object class="image" type="image/svg+xml" data="img/o2img/data_point_blue.svg"></object>
+             <div class="text-small text">
+                 View in BigSense
+             </div>
+             <div class="trash"></div>
          </div>
     </div>
      <div class="grid-element dl-pdf" g-width="2" g-height="1" g-col-x="4" g-col-y="15" g-gravity="top|left"
