@@ -29,6 +29,7 @@
     <style type="text/css">
 /* THE GRID ESSENTIALS ===========================*/
         @import url('http://fonts.googleapis.com/css?family=Open+Sans');
+        @import url('open-sans.extrabold.ttf');
         html {
             font-size: 10px ;
         }
@@ -39,6 +40,7 @@
             width: 100%;
             height: 100%;
             position: absolute;
+            font-family: 'Open Sans';
         }
 
         .grid-container {
@@ -61,7 +63,30 @@
         .logo{
             width:20rem;
             height:4rem;
+        }
 
+        .breadcrumb-wrapper{
+            width:100%;
+            height: 100%;
+            border: 1px solid red;
+        }
+
+        .breadcrumb-wrapper> .title{
+            font-size:1.8rem;
+            display:inline-block;
+            color:#46557a;
+        }
+
+        .breadcrumb-wrapper > .trash {
+            height: 100%;
+            display: inline-block;;
+            vertical-align: middle;
+            padding-top: 5px;
+        }
+
+        .breadcrumb-wrapper> .logo{
+            width:2.5rem;
+            display:inline;
         }
         .filler {
             background-color: black;
@@ -72,8 +97,7 @@
             background-color: red;
         }
         .text-small {
-            font-size: 1rem;
-            font-family: 'Open Sans';
+            font-size: 1rem;   
         }
 
         .text-excel {
@@ -145,8 +169,12 @@
     </div>
     <div class="grid-element breadcrumb" g-width="2" g-height="1" g-col-x="2" g-col-y="0" g-gravity="top|left"
          g-paddings="0.5 0 0.5 0.5" static="true">
-         <div class="filler">
-         </div>
+          <div class="breadcrumb-wrapper">
+            <div class="title">&gt;</div>
+            <object class="logo" type="image/svg+xml" data="img/o2img/stethecope_white.svg"></object>
+            <div class="title">Physicians</div>
+            <div class="trash"></div>
+          </div>
     </div>
     <div class="grid-element settings" g-width="2" g-height="1" g-col-x="10" g-col-y="0" g-gravity="top|left"
          g-paddings="1 0.5 1 0" static="true">
