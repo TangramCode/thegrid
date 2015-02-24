@@ -27,6 +27,7 @@
     <script src="js/grid_load.js"></script>
 
     <style type="text/css">
+/* THE GRID ESSENTIALS ===========================*/
         @import url('http://fonts.googleapis.com/css?family=Open+Sans');
         html {
             font-size: 10px ;
@@ -56,45 +57,47 @@
             -moz-box-sizing: border-box;    /* Firefox, other Gecko */
              box-sizing: border-box;         /* Opera/IE 8+ */
         }
-
-        .text-small {
-            font-family: 'Open Sans';
-            font-size: 1.8rem;
-        }
-
-        .text-big {
-            font-family: 'Open Sans';
-            font-size: 3.6rem;
-            line-height: 77%;
-        }
-
-        .text-wrapper > * {
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .lefty {
-            text-align: right;
-        }
-
-        .righty {
-            text-align: left;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .image-wrapper {
+/*===================================================*/
+        .filler {
+            background-color: black;
+            width: 100%;
             height: 100%;
-            text-align: center;
+        }
+        .filler-alt {
+            background-color: red;
+        }
+        .text-small {
+            font-size: 1rem;
+            font-family: 'Open Sans';
         }
 
-        .white{
-            color:white;
+        .text-excel {
+            right: calc(1rem + 5px);
         }
-
-
+        .text-pdf {
+            left: calc(1rem + 5px);
+        }
+        .big-sense-button {
+            width: 100%;
+            height: 100%;
+            border: 2px solid dodgerblue;
+            border-radius: 5rem;
+        }
+        .download-container {
+            height: 100%;
+            position: relative;
+        }
+        .download-container-left {
+            float: right;
+        }
+         .text-pdf, .text-excel {
+             line-height: 1.05rem;
+             float: left;
+        }
+        .download-icon {
+            width: 1rem;
+            float: left;
+        }
     </style>
 </head>
 <body>
@@ -105,11 +108,84 @@
 
 <!-- Add your site or application content here -->
 <div class="grid-container" g-cols="12" g-rows="17">
-    <div class="grid-element" g-width="1" g-height="1" g-col-x="0" g-col-y="0" g-gravity="top|left"
-         g-paddings="0 0 0 0.5" static="true">
-        <img class="logo-top" src="img/me_there_logo.png">
+     <div class="grid-element logo" g-width="2" g-height="1" g-col-x="0" g-col-y="0" g-gravity="top|left"
+         g-paddings="0.5 0.5 0.5 0.5" static="true">
+         <div class="filler">
+         </div>
     </div>
-
+    <div class="grid-element breadcrumb" g-width="2" g-height="1" g-col-x="2" g-col-y="0" g-gravity="top|left"
+         g-paddings="0.5 0 0.5 0.5" static="true">
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element settings" g-width="2" g-height="1" g-col-x="10" g-col-y="0" g-gravity="top|left"
+         g-paddings="1 0.5 1 0" static="true">
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element search-box" g-width="4" g-height="1" g-col-x="4" g-col-y="1" g-gravity="top|left"
+         g-paddings="0 0 0 0" >
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element year-picker" g-width="1" g-height="1" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal"
+         g-paddings="0 0 0 0" >
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element chart" g-width="12" g-height="5" g-col-x="0" g-col-y="3" g-gravity="top|left"
+         g-paddings="0 0 0 0" >
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element chart-label" g-width="4" g-height="1" g-col-x="6" g-col-y="8" g-gravity="top|center_horizontal"
+         g-paddings="0 0 0 0" static="true">
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element line" g-width="0.01" g-height="5" g-col-x="6" g-col-y="9" g-gravity="top|left"
+         g-paddings="0 0 0 0" static="true">
+         <div class="filler">
+         </div>
+    </div>
+    <div class="grid-element left-table" g-width="6" g-height="4" g-col-x="0" g-col-y="9" g-gravity="top|left"
+         g-paddings="0 1 0 0" static="true">
+         <div class="filler filler-alt">
+         </div>
+    </div>
+    <div class="grid-element right-table" g-width="6" g-height="4" g-col-x="6" g-col-y="9" g-gravity="top|left"
+         g-paddings="0 0 0 1" static="true">
+         <div class="filler filler-alt">
+         </div>
+    </div>
+    <div class="grid-element note" g-width="4" g-height="1" g-col-x="0" g-col-y="13" g-gravity="top|left"
+         g-paddings="0 0 0 2" static="true">
+         <div class="filler filler-alt">
+         </div>
+    </div>
+    <div class="grid-element " g-width="2" g-height="1" g-col-x="6" g-col-y="14" g-gravity="top|center_horizontal"
+         g-paddings="0.5 2 0.5 2" >
+         <div class="big-sense-button">
+         </div>
+    </div>
+     <div class="grid-element dl-pdf" g-width="2" g-height="1" g-col-x="4" g-col-y="15" g-gravity="top|left"
+         g-paddings="0 1 0.5 0"  static="true">
+          <div class="download-container download-container-left">
+             <object class="download-icon icon-right" type="image/svg+xml" data="img/o2img/download.svg"></object>
+             <div class="text-small text-excel">
+                 Download Excel Version
+             </div>
+        </div>
+    </div>
+    <div class="grid-element dl-excl" g-width="2" g-height="1" g-col-x="6" g-col-y="15" g-gravity="top|left"
+         g-paddings="0 0 0.5 1"  static="true">
+        <div class="download-container">
+             <object class="download-icon" type="image/svg+xml" data="img/o2img/download.svg"></object>
+             <div class="text-small text-pdf">
+                 Download PDF Version
+             </div>
+        </div>
+    </div>
 </div>
 <script>
     var grid = new Grid();
