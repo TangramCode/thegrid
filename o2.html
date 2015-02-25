@@ -230,7 +230,11 @@
         .table-content tr {
             border-bottom: 1px solid black;
         }
-
+        .line {
+            width: 1px;
+            height: 100%;
+            background-color: black;
+        }
     </style>
 </head>
 <body>
@@ -285,9 +289,9 @@
          <div class="filler">
          </div>
     </div>
-    <div class="grid-element line" g-width="0.01" g-height="5" g-col-x="6" g-col-y="9" g-gravity="top|left"
-         g-paddings="0 0 0 0" static="true">
-         <div class="filler">
+    <div class="grid-element" g-width="0.5" g-height="5" g-col-x="6" g-col-y="9" g-gravity="top|left"
+         g-paddings="2.7 0 5.3 0" static="true">
+         <div class="line">
          </div>
     </div>
     <div class="grid-element left-table" g-width="6" g-height="4" g-col-x="0" g-col-y="9" g-gravity="top|left"
