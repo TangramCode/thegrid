@@ -119,11 +119,62 @@
             height: 100%;
             display: inline-block;;
             vertical-align: middle;
-            padding-top: 5px;
+            padding-top: 0.5rem;
         }
         .note {
             color: gray;
         }
+        .table-default {
+            width: 100%;
+            height: 25%;
+        }
+        .table-default tr{
+            border-bottom: 1px solid black;
+        }
+        .table-default th {
+            padding-top: 20px;
+        }
+        .table-default th, .table-default td {
+            text-align: right;
+            font-size: 1.2rem;
+        }
+        .table-default .hp {
+            width: 24%;
+        }
+        .table-default .hp > .icon {
+            width: 1.5rem;
+            margin-right: 5px;
+        }
+        .table-default .hp > .stet {
+            width: 1.2rem;
+            margin-right: 5px;
+            margin-top: 1%;
+        }
+        .table-default .hp > * {
+            float: left;
+            line-height: 2rem;
+        }
+        .table-default .po2 {
+            width: 19%;
+        }
+        .table-default .lever {
+            width: 16%;
+        }
+        .table-default .opportunity {
+            width: 18%;
+        }
+        .table-default .patients {
+            width: 18%;
+        }
+        .table-content {
+            font-weight: normal !important;
+            width: 100%;
+            height: 75%;
+        }
+        .table-content tr {
+            border-bottom: 1px solid black;
+        }
+
     </style>
 </head>
 <body>
@@ -175,9 +226,85 @@
          </div>
     </div>
     <div class="grid-element left-table" g-width="6" g-height="4" g-col-x="0" g-col-y="9" g-gravity="top|left"
-         g-paddings="0 1 0 0" static="true">
-         <div class="filler filler-alt">
-         </div>
+         g-paddings="0 1 0 2.5" static="true">
+            <table class="table-default ">
+                    <tr>
+                        <th class="hp">
+                            <img class="icon" src="img/o2img/arrow_up_30.png">
+                            <div>High Performers</div>
+                        </th>
+                        <th class="po2">
+                            PO2 Score
+                        </th>
+                        <th class="lever">
+                            Lever
+                        </th>
+                        <th class="opportunity">
+                            $ Opportunity
+                        </th>
+                        <th class="patients">
+                            Patients (+/-)
+                        </th>
+                    </tr>
+            </table>
+
+        <table class="table-default table-content ">
+                <tr>
+                    <td class="hp">
+                        <object class="icon stet" type="image/svg+xml" data="img/o2img/stetoscope.svg"></object>
+                        <div>Joesph Sophia</div>
+                    </td>
+                    <td class="po2">
+                        184
+                    </td>
+                    <td class="lever">
+                        30d Readm
+                    </td>
+                    <td class="opportunity">
+                        $2,385
+                    </td>
+                    <td class="patients">
+                        342 / 21
+                    </td>
+                </tr>
+                <tr>
+                    <td class="hp">
+                        <object class="icon stet" type="image/svg+xml" data="img/o2img/stetoscope.svg"></object>
+                        <div>Joesph Sophia</div>
+                    </td>
+                    <td class="po2">
+                        184
+                    </td>
+                    <td class="lever">
+                        30d Readm
+                    </td>
+                    <td class="opportunity">
+                        $2,385
+                    </td>
+                    <td class="patients">
+                        342 / 21
+                    </td>
+                </tr>
+                <tr>
+                    <td class="hp">
+                        <object class="icon stet" type="image/svg+xml" data="img/o2img/stetoscope.svg"></object>
+                        <div>Joesph Sophia</div>
+                    </td>
+                    <td class="po2">
+                        184
+                    </td>
+                    <td class="lever">
+                        30d Readm
+                    </td>
+                    <td class="opportunity">
+                        $2,385
+                    </td>
+                    <td class="patients">
+                        342 / 21
+                    </td>
+                </tr>
+
+        </table>
     </div>
     <div class="grid-element right-table" g-width="6" g-height="4" g-col-x="6" g-col-y="9" g-gravity="top|left"
          g-paddings="0 0 0 1" static="true">
@@ -185,7 +312,7 @@
          </div>
     </div>
     <div class="grid-element" g-width="4" g-height="1" g-col-x="0" g-col-y="13" g-gravity="top|left"
-         g-paddings="1 0 0 2" static="true">
+         g-paddings="1 0 0 2.5" static="true">
          <span class="note text-small">Note: BPCI program parameters do not adjust for acuity and case-mix issues.
          </span>
     </div>

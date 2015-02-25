@@ -76,6 +76,7 @@ var GridElement = function(node){
         var paddingBottom;
         var paddingLeft;
         var paddingRight;
+
         if(widescreen) {
            paddingTop = paddings[TOP]/100 * window.innerHeight;
            paddingBottom = paddings[BOTTOM]/100 * window.innerHeight;
@@ -87,7 +88,7 @@ var GridElement = function(node){
            paddingLeft = paddings[LEFT]/100 * window.innerWidth;
            paddingRight = paddings[RIGHT]/100 * window.innerWidth;
         }
-
+        console.log(paddingTop);
 
         node.style.paddingTop = paddingTop+"px";
         node.style.paddingRight = paddingRight+"px";
@@ -112,6 +113,11 @@ var GridElement = function(node){
         var dimensions = {"newWidth":newWidth, "newHeight": newHeight,
              "horizontalGravityOffset": horizontalGravityOffset, "verticalGravityOffset":verticalGravityOffset, "widescreen":false};
 
+        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT >= 2.37)
+            dimensions.widescreen =  true;
+        else
+            dimensions.widescreen = false;
+
         if(!is_static){
             dimensions = calculateDynamicDimensions(dimensions);
         }
@@ -127,11 +133,6 @@ var GridElement = function(node){
 
     var calculateDynamicDimensions = function(dimensions){
 
-        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT >= 2.37)
-            dimensions.widescreen =  true;
-        else
-            dimensions.widescreen = false;
-
         if(dimensions.widescreen) {
             dimensions.newWidth = CELL_FULL_HEIGHT*HORIZONTAL_RATIO*width;
             dimensions.horizontalGravityOffset = Math.floor((width * CELL_FULL_WIDTH - dimensions.newWidth)/2);
@@ -139,7 +140,6 @@ var GridElement = function(node){
             dimensions.newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
             dimensions.verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - dimensions.newHeight)/2);
         }
-
         return dimensions;
     }
 
