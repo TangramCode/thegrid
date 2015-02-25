@@ -127,6 +127,33 @@
             width: 1rem;
             float: left;
         }
+
+        .search-wrapper{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #46557b;
+            border-radius: 5rem;
+            text-align: center;
+        }
+
+        .search-wrapper > .image{
+            width:2rem;
+            display: block;
+            float: right;
+            text-align: right;
+            height:100%;
+            margin-right:0.5rem;
+        }
+
+        .search-wrapper > .text{
+            width:calc(100% - 2.5rem);
+            height:100%;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #46557b;
+            float:left;
+            line-height: 4rem;
+        }
         .big-sense-button {
             width: 100%;
             height: calc(100% - 6px);
@@ -136,13 +163,15 @@
         }
         .big-sense-button > .image{
             width: 2rem;
-            display: inline-block;
+            display: block;
+            float:right;
         }
         .big-sense-button > .text{
             color: #42c6f3;
             display: inline-block;
             font-size: 1.2rem;
             font-weight: bold;
+            
         }
         .big-sense-button > .trash {
             height: 100%;
@@ -183,7 +212,13 @@
     </div>
     <div class="grid-element search-box" g-width="4" g-height="1" g-col-x="4" g-col-y="1" g-gravity="top|left"
          g-paddings="0 0 0 0" >
-         <div class="filler">
+        
+         <div class="search-wrapper">
+             <div class="text">
+                Physicians
+             </div>
+              <object class="image" type="image/svg+xml" data="img/o2img/magnifer_small_blue.svg"></object>
+             <div class="trash"></div>
          </div>
     </div>
     <div class="grid-element year-picker" g-width="1" g-height="1" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal"
@@ -193,7 +228,7 @@
     </div>
     <div class="grid-element chart" g-width="12" g-height="5" g-col-x="0" g-col-y="3" g-gravity="top|left"
          g-paddings="0 0 0 0" >
-         <div class="filler">
+          <div class="filler">
          </div>
     </div>
     <div class="grid-element chart-label" g-width="4" g-height="1" g-col-x="6" g-col-y="8" g-gravity="top|center_horizontal"
