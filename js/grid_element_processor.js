@@ -6,6 +6,8 @@
 var GridElement = function(node){
     var gravity_x = "left";
     var gravity_y = "top";
+    var snap_x = "center";
+    var snap_y = "center"
     var width;
     var height;
     var col_x;
@@ -23,6 +25,16 @@ var GridElement = function(node){
         var res = gravity.split("|");
         gravity_x = res[1];
         gravity_y = res[0];
+    };
+
+    var getDynamicSnap = function() {
+        var snapTo = node.getAttribute("g-dynamic-snap");
+        if(snapTo !== null) {
+            var res = snapTo.split("|");
+            snap_x = res[1];
+            snap_y = res[0];
+        }
+
     };
 
     var getAttributes = function() {
@@ -120,6 +132,7 @@ var GridElement = function(node){
 
         if(!is_static){
             dimensions = calculateDynamicDimensions(dimensions);
+            dimensions = calculateDynamicSnap(dimensions);
         }
 
         node.style.width = Math.floor(dimensions.newWidth)+"px";
@@ -135,17 +148,35 @@ var GridElement = function(node){
 
         if(dimensions.widescreen) {
             dimensions.newWidth = CELL_FULL_HEIGHT*HORIZONTAL_RATIO*width;
-            dimensions.horizontalGravityOffset = Math.floor((width * CELL_FULL_WIDTH - dimensions.newWidth)/2);
+
         } else {
             dimensions.newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
-            dimensions.verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - dimensions.newHeight)/2);
         }
         return dimensions;
     }
 
+    var calculateDynamicSnap = function(dimensions) {
+        if(snap_y === 'top') {
+
+        } else if(snap_y == 'bottom') {
+            dimensions.verticalGravityOffset = Math.floor(height * CELL_FULL_HEIGHT - dimensions.newHeight);
+        } else if(snap_y == 'center'){
+            dimensions.verticalGravityOffset = Math.floor((height * CELL_FULL_HEIGHT - dimensions.newHeight)/2);
+        }
+
+        if(snap_x === 'left') {
+
+        } else if(snap_x == 'right') {
+            dimensions.horizontalGravityOffset = Math.floor(width * CELL_FULL_WIDTH - dimensions.newWidth);
+        } else if(snap_x == 'center'){
+            dimensions.horizontalGravityOffset = Math.floor((width * CELL_FULL_WIDTH - dimensions.newWidth)/2);
+        }
+        return dimensions;
+    }
 
     GridElement.prototype.process = function(){
         getGravity();
+        getDynamicSnap();
         getAttributes();
         calculatePositionAndDimension();
     };
