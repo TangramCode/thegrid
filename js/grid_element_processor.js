@@ -100,7 +100,6 @@ var GridElement = function(node){
            paddingLeft = paddings[LEFT]/100 * window.innerWidth;
            paddingRight = paddings[RIGHT]/100 * window.innerWidth;
         }
-        console.log(paddingTop);
 
         node.style.paddingTop = paddingTop+"px";
         node.style.paddingRight = paddingRight+"px";
@@ -174,7 +173,12 @@ var GridElement = function(node){
         return dimensions;
     }
 
-    GridElement.prototype.process = function(){
+    var setFontSize = function(fontSizeWithoutZoom) {
+        node.style.fontSize = fontSizeWithoutZoom+"px";
+    }
+
+    GridElement.prototype.process = function(fontSizeWithoutZoom){
+        setFontSize(fontSizeWithoutZoom);
         getGravity();
         getDynamicSnap();
         getAttributes();

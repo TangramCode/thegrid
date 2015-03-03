@@ -87,7 +87,7 @@
         }
 
         .breadcrumb-wrapper > .logo{
-            width:2.5rem;
+            width:2.5em;
             display:inline-block;
             vertical-align: middle;
             margin-left: 2px;
@@ -116,7 +116,7 @@
             height: 100%;
         }
         .download-container {
-            height: 1rem;
+            height: 1em;
             position: absolute;
             bottom: 0;
         }
@@ -128,7 +128,7 @@
              float: left;
         }
         .download-icon {
-            width: 1rem;
+            width: 1em;
             float: left;
         }
 
@@ -136,36 +136,40 @@
             width: 100%;
             height: 100%;
             border: 1px solid #46557b;
-            border-radius: 5rem;
+            border-radius: 5em;
             text-align: center;
         }
 
         .search-wrapper > .image{
-            width:2rem;
+            width:2em;
             position: absolute;
             right: 0;
             height:100%;
-            margin-right: 1rem;
+            margin-right: 1em;
         }
 
         .search-wrapper > .text{
-            width: 100%;
-            height: 100%;
             font-size: 1.6rem;
             font-weight: bold;
             color: #46557b;
-            float:left;
-            line-height: 4.5rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .search-wrapper > .trash{
+           display: inline-block;
+            height: 100%;
+            vertical-align: middle;
         }
         .big-sense-button {
             width: 100%;
             height: calc(100% - 6px);
             border: 2px solid #42c6f3;
-            border-radius: 5rem;
+            border-radius: 5em;
             text-align: center;
         }
         .big-sense-button > .image{
-            width: 2rem;
+            width: 2em;
             display: inline-block;
         }
         .big-sense-button > .text{
@@ -179,7 +183,7 @@
             height: 100%;
             display: inline-block;;
             vertical-align: middle;
-            padding-top: 0.5rem;
+            padding-top: 0.5em;
         }
         .note {
             color: gray;
@@ -196,17 +200,20 @@
         }
         .table-default th, .table-default td {
             text-align: right;
+        }
+        .table-default th > div , .table-default td > div {
             font-size: 1.2rem;
         }
+
         .table-default .hp {
             width: 24%;
         }
         .table-default .hp > .icon {
-            width: 1.5rem;
+            width: 1.5em;
             margin-right: 10px;
         }
         .table-default .hp > .stet {
-            width: 1.4rem;
+            width: 1.4em;
             margin-top: 2%;
         }
         .table-default .hp > * {
@@ -269,7 +276,7 @@
             line-height: 1.8;
         }
          .settings-wrapper > .user-info > .bot > .image {
-            width: 1rem;
+            width: 1em;
         }
         .settings-wrapper > .user-info > .bot > .trash {
             height: 100%;
@@ -357,12 +364,6 @@
             font-size: 2.6rem;
             font-weight: bold;
         }
-        .chart > .lines-container > .lines-inner > span:nth-child(2) {
-            padding-top: 0.3rem;
-        }
-        .chart > .lines-container > .lines-inner > .minus {
-            margin-top: -0.3rem;
-        }
         .chart > .lines-container > .lines-outer {
             height: 100%;
             width: 76%;
@@ -376,7 +377,7 @@
         .chart  > .lines-container > .lines-outer > .labels {
             position: absolute;
             height: 100%;
-            left: 2rem;
+            left: 2em;
             width: calc(100% - 2rem);
         }
         .chart  > .lines-container > .lines-outer > .labels > div {
@@ -387,7 +388,7 @@
            display: inline-block;
            background-color: white;
             padding-right: 10px;
-            line-height: 4.3rem;
+            vertical-align: middle;
         }
         .chart  > .lines-container > .lines-outer > .labels > div > .trash {
            height: 100%;
@@ -396,6 +397,9 @@
         .chart  > .lines-container > .lines-outer > .labels > div > div:first-child {
            font-size: 1.6rem;
             font-weight: bold;
+        }
+        .year-picker {
+            text-align: center;
         }
     </style>
 </head>
@@ -445,7 +449,7 @@
              <div class="trash"></div>
          </div>
     </div>
-    <div class="grid-element year-picker" g-width="1" g-height="1" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal"
+    <div class="grid-element year-picker" g-width="2" g-height="1" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal"
          g-paddings="0 0 0 0" >
          <span class="arrow">&#65513;</span>
          <span class="date">Dec 2012</span>
@@ -461,22 +465,27 @@
                     <div>
                         <div>3,821</div>
                         <div>Patients</div>
+                        <div class="trash"></div>
                     </div>
                     <div>
                         <div>$129.2mm</div>
                         <div>Claims</div>
+                        <div class="trash"></div>
                     </div>
                     <div>
                         <div>3.1x</div>
                         <div>Specialist Referals</div>
+                        <div class="trash"></div>
                     </div>
                     <div>
                         <div>3.4</div>
                         <div>LOS</div>
+                        <div class="trash"></div>
                     </div>
                     <div>
                         <div>21%</div>
                         <div>Readmission Rate</div>
+                        <div class="trash"></div>
                     </div>
                 </div>
               </div>
@@ -534,16 +543,16 @@
                             <div>High Performers</div>
                         </th>
                         <th class="po2">
-                            PO2 Score
+                            <div>PO2 Score</div>
                         </th>
                         <th class="lever">
-                            Lever
+                            <div>Lever</div>
                         </th>
                         <th class="opportunity">
-                            $ Opportunity
+                            <div>$ Opportunity</div>
                         </th>
                         <th class="patients">
-                            Patients (+/-)
+                            <div>Patients (+/-)</div>
                         </th>
                     </tr>
             </table>
@@ -555,16 +564,16 @@
                         <div>Joesph Sophia</div>
                     </td>
                     <td class="po2">
-                        184
+                        <div>184</div>
                     </td>
                     <td class="lever">
-                        30d Readm
+                        <div>30d Readm<div>
                     </td>
                     <td class="opportunity">
-                        $2,385
+                        <div>$2,385<div>
                     </td>
                     <td class="patients">
-                        342 / 21
+                        <div>342 / 21</div>
                     </td>
                 </tr>
                 <tr>
@@ -573,16 +582,16 @@
                         <div>Joesph Sophia</div>
                     </td>
                     <td class="po2">
-                        184
+                        <div>184</div>
                     </td>
                     <td class="lever">
-                        30d Readm
+                        <div>30d Readm<div>
                     </td>
                     <td class="opportunity">
-                        $2,385
+                        <div>$2,385<div>
                     </td>
                     <td class="patients">
-                        342 / 21
+                        <div>342 / 21</div>
                     </td>
                 </tr>
                 <tr>
@@ -591,16 +600,16 @@
                         <div>Joesph Sophia</div>
                     </td>
                     <td class="po2">
-                        184
+                        <div>184</div>
                     </td>
                     <td class="lever">
-                        30d Readm
+                        <div>30d Readm<div>
                     </td>
                     <td class="opportunity">
-                        $2,385
+                        <div>$2,385<div>
                     </td>
                     <td class="patients">
-                        342 / 21
+                        <div>342 / 21</div>
                     </td>
                 </tr>
 
@@ -615,16 +624,16 @@
                             <div>Low Performers</div>
                         </th>
                         <th class="po2">
-                            PO2 Score
+                            <div>PO2 Score</div>
                         </th>
                         <th class="lever">
-                            Lever
+                            <div>Lever</div>
                         </th>
                         <th class="opportunity">
-                            $ Opportunity
+                            <div>$ Opportunity</div>
                         </th>
                         <th class="patients">
-                            Patients (+/-)
+                            <div>Patients (+/-)</div>
                         </th>
                     </tr>
             </table>
@@ -636,16 +645,16 @@
                         <div>Joesph Sophia</div>
                     </td>
                     <td class="po2">
-                        184
+                        <div>184</div>
                     </td>
                     <td class="lever">
-                        30d Readm
+                        <div>30d Readm<div>
                     </td>
                     <td class="opportunity">
-                        $2,385
+                        <div>$2,385<div>
                     </td>
                     <td class="patients">
-                        342 / 21
+                        <div>342 / 21</div>
                     </td>
                 </tr>
                 <tr>
@@ -654,16 +663,16 @@
                         <div>Joesph Sophia</div>
                     </td>
                     <td class="po2">
-                        184
+                        <div>184</div>
                     </td>
                     <td class="lever">
-                        30d Readm
+                        <div>30d Readm<div>
                     </td>
                     <td class="opportunity">
-                        $2,385
+                        <div>$2,385<div>
                     </td>
                     <td class="patients">
-                        342 / 21
+                        <div>342 / 21</div>
                     </td>
                 </tr>
                 <tr>
@@ -672,16 +681,16 @@
                         <div>Joesph Sophia</div>
                     </td>
                     <td class="po2">
-                        184
+                        <div>184</div>
                     </td>
                     <td class="lever">
-                        30d Readm
+                        <div>30d Readm<div>
                     </td>
                     <td class="opportunity">
-                        $2,385
+                        <div>$2,385<div>
                     </td>
                     <td class="patients">
-                        342 / 21
+                        <div>342 / 21</div>
                     </td>
                 </tr>
 
@@ -767,6 +776,7 @@
         context.stroke();
     }
     createLineTop();
+
 </script>
 
 </body>
