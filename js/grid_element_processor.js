@@ -21,14 +21,14 @@ var GridElement = function(node){
     };
 
     var getGravity = function () {
-        var gravity = node.getAttribute("g-gravity");
+        var gravity = getAttributeOrDefault("g-gravity","top|left");
         var res = gravity.split("|");
         gravity_x = res[1];
         gravity_y = res[0];
     };
 
     var getDynamicSnap = function() {
-        var snapTo = node.getAttribute("g-dynamic-snap");
+        var snapTo = getAttributeOrDefault("g-dynamic-snap","center|center");
         if(snapTo !== null) {
             var res = snapTo.split("|");
             snap_x = res[1];
@@ -38,18 +38,32 @@ var GridElement = function(node){
     };
 
     var getAttributes = function() {
-        width = node.getAttribute("g-width");
-        height = node.getAttribute("g-height");
-        col_x = node.getAttribute("g-col-x");
-        col_y = node.getAttribute("g-col-y");
-        var temp_paddings = node.getAttribute("g-paddings");
-        is_static = node.getAttribute("static");
+        width = getAttribute("g-width");
+        height = getAttribute("g-height");
+        col_x = getAttribute("g-col-x");
+        col_y = getAttribute("g-col-y");
+        var temp_paddings = getAttributeOrDefault("g-paddings",  "0 0 0 0");
+        is_static = getAttributeOrDefault("static", true);
 
         if(temp_paddings){
             paddings = temp_paddings.split(" ");
         }
 
     };
+
+    var getAttribute = function(attribute){
+        var value = node.getAttribute(attribute);
+        if (value === null || value === undefined){
+            throw new Exception("Error: you should define attribute: "+attribute);
+        }
+
+        return value;
+    }
+
+    var getAttributeOrDefault = function(attribute, defValue){
+        var attr = node.getAttribute(attribute);
+       return  (attr === null || attr === undefined || attr ==="")? defValue: attr;
+    }
 
     var calculateHorizontalGravity = function(horizontalGravityOffset) {
         if(width ==='match_window'){
