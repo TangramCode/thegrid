@@ -728,17 +728,44 @@
 <script>
     var grid = new Grid();
 
+    var mouse = {x: 0, y: 0};
+
     window.onload = function() {
         onGridLoad();
         grid.calculateFontSize();
         grid.walkDOM(document.body);
+        grid.calculateZoomPosition();
     };
 
     window.onresize = function() {
         onGridLoad();
         grid.calculateFontSize();
         grid.walkDOM(document.body);
+        grid.calculateZoomPosition();
     };
+
+
+//    document.addEventListener('mousemove', function(e){
+//        mouse.x = e.clientX || e.pageX;
+//        mouse.y = e.clientY || e.pageY
+//        console.log(mouse.x, mouse.y);
+//    }, false);
+
+    if (document.addEventListener) {
+            // IE9, Chrome, Safari, Opera
+            document.addEventListener("mousewheel", MouseWheelHandler, false);
+            // Firefox
+            document.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+        }
+        // IE 6/7/8
+        else
+            document.attachEvent("onmousewheel", MouseWheelHandler);
+
+    function MouseWheelHandler(e) {
+        mouse.x = e.pageX;
+        mouse.y = e.pageY;
+    }
+
 
     function createLineTop() {
         var canvas = document.getElementById('lines');

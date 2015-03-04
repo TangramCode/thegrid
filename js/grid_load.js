@@ -27,10 +27,20 @@ var Grid = function() {
 
     Grid.prototype.calculateFontSize = function() {
        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT < HORIZONTAL_RATIO) {
-         document.getElementsByTagName("html")[0].style.fontSize = window.innerWidth /136.6+"px";
+         document.getElementsByTagName("html")[0].style.fontSize = VIEWPORT_WIDTH /136.6+"px";
        } else {
-         document.getElementsByTagName("html")[0].style.fontSize = window.innerHeight /76.8+"px";
+         document.getElementsByTagName("html")[0].style.fontSize = VIEWPORT_HEIGHT /76.8+"px";
        }
+    };
+
+    Grid.prototype.calculateZoomPosition = function() {
+    var scrollX = window.innerWidth / (mouse.x / ZOOM);
+    var scrollY = window.innerHeight / (mouse.y / ZOOM);
+
+    window.scrollTo((VIEWPORT_WIDTH - (window.innerWidth )) / scrollX , ((VIEWPORT_HEIGHT - window.innerHeight) )/ scrollY );
+    mouse.x = 0;
+    mouse.y = 0 ;
+
     };
 };
 

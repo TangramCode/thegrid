@@ -53,7 +53,7 @@ var GridElement = function(node){
 
     var calculateHorizontalGravity = function(horizontalGravityOffset) {
         if(width ==='match_window'){
-            node.style.left = (-0.02 * window.innerWidth) +'px';
+            node.style.left = (-0.02 * VIEWPORT_WIDTH) +'px';
             return;
         }
 
@@ -90,17 +90,16 @@ var GridElement = function(node){
         var paddingRight;
 
         if(widescreen) {
-           paddingTop = paddings[TOP]/100 * window.innerHeight;
-           paddingBottom = paddings[BOTTOM]/100 * window.innerHeight;
-           paddingLeft = paddings[LEFT]/100 * window.innerHeight/9*16;
-           paddingRight = paddings[RIGHT]/100 * window.innerHeight/9*16;
+           paddingTop = paddings[TOP]/100 *  VIEWPORT_HEIGHT;
+           paddingBottom = paddings[BOTTOM]/100 * VIEWPORT_HEIGHT;
+           paddingLeft = paddings[LEFT]/100 *  VIEWPORT_HEIGHT/9*16;
+           paddingRight = paddings[RIGHT]/100 *  VIEWPORT_HEIGHT/9*16;
         } else {
-           paddingTop = paddings[TOP]/100 * window.innerWidth/16*9;
-           paddingBottom = paddings[BOTTOM]/100 * window.innerWidth/16*9;
-           paddingLeft = paddings[LEFT]/100 * window.innerWidth;
-           paddingRight = paddings[RIGHT]/100 * window.innerWidth;
+           paddingTop = paddings[TOP]/100 * VIEWPORT_WIDTH/16*9;
+           paddingBottom = paddings[BOTTOM]/100 * VIEWPORT_WIDTH/16*9;
+           paddingLeft = paddings[LEFT]/100 * VIEWPORT_WIDTH;
+           paddingRight = paddings[RIGHT]/100 * VIEWPORT_WIDTH;
         }
-        console.log(paddingTop);
 
         node.style.paddingTop = paddingTop+"px";
         node.style.paddingRight = paddingRight+"px";
@@ -115,7 +114,7 @@ var GridElement = function(node){
 
         if(width === 'match_window'){
             
-            newWidth= window.innerWidth;
+            newWidth= VIEWPORT_WIDTH;
         }else{
             newWidth = width * CELL_FULL_WIDTH; 
         }
