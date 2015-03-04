@@ -3,7 +3,7 @@
  */
 
 var Grid = function() {
-    var fontSizeWithoutZoom = 10;
+
     var readDomNode = function(node) {
         if (node.classList && node.classList.contains('grid-container')) {
             var container = new Container(node);
@@ -12,7 +12,7 @@ var Grid = function() {
 
         if (node.classList && node.classList.contains('grid-element')) {
             var element = new GridElement(node);
-            element.process(fontSizeWithoutZoom);
+            element.process();
         }
     };
 
@@ -26,19 +26,11 @@ var Grid = function() {
     };
 
     Grid.prototype.calculateFontSize = function() {
-        var zoomFactor = 1;
-        if(window.devicePixelRatio !== undefined)
-            zoomFactor = window.devicePixelRatio;
-        else
-            zoomFactor = screen.deviceXDPI / screen.logicalXDPI;
-
-        var fontSize = 0;
-        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT < HORIZONTAL_RATIO)
-            fontSize = window.innerWidth /136.6;
-        else
-            fontSize = window.innerHeight /76.8;
-        fontSizeWithoutZoom = fontSize;
-        document.getElementsByTagName("html")[0].style.fontSize = (fontSize * zoomFactor)+"px";
+       if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT < HORIZONTAL_RATIO) {
+         document.getElementsByTagName("html")[0].style.fontSize = window.innerWidth /136.6+"px";
+       } else {
+         document.getElementsByTagName("html")[0].style.fontSize = window.innerHeight /76.8+"px";
+       }
     };
 };
 
