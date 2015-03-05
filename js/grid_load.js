@@ -34,13 +34,12 @@ var Grid = function() {
     };
 
     Grid.prototype.calculateZoomPosition = function() {
-    var scrollX = window.innerWidth / (mouse.x / ZOOM);
-    var scrollY = window.innerHeight / (mouse.y / ZOOM);
+        var scrollX = window.innerWidth / (mouse.x / ZOOM);
+        var scrollY = window.innerHeight / (mouse.y / ZOOM);
 
-    window.scrollTo((VIEWPORT_WIDTH - (window.innerWidth )) / scrollX , ((VIEWPORT_HEIGHT - window.innerHeight) )/ scrollY );
-    mouse.x = 0;
-    mouse.y = 0 ;
-
+        window.scrollTo((VIEWPORT_WIDTH - (window.innerWidth )) / scrollX , ((VIEWPORT_HEIGHT - window.innerHeight) )/ scrollY );
+        mouse.x = 0;
+        mouse.y = 0 ;
     };
 };
 
