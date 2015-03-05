@@ -227,6 +227,21 @@ var Grid = function() {
        }
     };
 
+    Grid.prototype.install = function(){
+        window.onload = function() {
+            onGridLoad();
+            grid.calculateFontSize();
+            grid.walkDOM(document.body);
+            grid.calculateZoomPosition();
+        }
+        window.onresize = function() {
+            onGridLoad();
+            grid.calculateFontSize();
+            grid.walkDOM(document.body);
+            grid.calculateZoomPosition();
+        }
+    };
+
     Grid.prototype.calculateZoomPosition = function() {
     var scrollX = window.innerWidth / (mouse.x / ZOOM);
     var scrollY = window.innerHeight / (mouse.y / ZOOM);
@@ -236,6 +251,9 @@ var Grid = function() {
     mouse.y = 0 ;
 
     };
+
+
+    
 };
 
 var Container = function(node) {

@@ -23,7 +23,6 @@
     <!-- https://github.com/eligrey/classList.js -->
     <script src="js/lib/classList.js"></script>
     <script src="js/thegrid.js"></script>
-
 	<link rel="stylesheet" href="css/thegrid.css" type="text/css"/>
     <style type="text/css">
 
@@ -694,22 +693,11 @@
 </div>
 <script>
     var grid = new Grid();
+    grid.install();
 
     var mouse = {x: 0, y: 0};
 
-    window.onload = function() {
-        onGridLoad();
-        grid.calculateFontSize();
-        grid.walkDOM(document.body);
-        grid.calculateZoomPosition();
-    };
 
-    window.onresize = function() {
-        onGridLoad();
-        grid.calculateFontSize();
-        grid.walkDOM(document.body);
-        grid.calculateZoomPosition();
-    };
 
 
 //    document.addEventListener('mousemove', function(e){
