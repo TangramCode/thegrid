@@ -234,6 +234,7 @@ var Grid = function() {
             grid.calculateFontSize();
             grid.walkDOM(document.body);
             grid.calculateZoomPosition();
+            document.getElementsByClassName("grid-container")[0].style.visibility = "visible";
         }
         window.onresize = function() {
             onGridLoad();
