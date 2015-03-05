@@ -198,6 +198,8 @@ var GridElement = function(node){
 
 var Grid = function() {
 
+    var mouse = {x: 0, y: 0};
+
     var readDomNode = function(node) {
         if (node.classList && node.classList.contains('grid-container')) {
             var container = new Container(node);
@@ -228,7 +230,8 @@ var Grid = function() {
     };
 
     Grid.prototype.install = function(){
-        
+
+
         window.onload = function() {
             onGridLoad();
             grid.calculateFontSize();
@@ -242,15 +245,27 @@ var Grid = function() {
             grid.walkDOM(document.body);
             grid.calculateZoomPosition();
         }
+
+        if (document.addEventListener) {
+            document.addEventListener("mousewheel", MouseWheelHandler, false);
+            document.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+        }
+        else
+            document.attachEvent("onmousewheel", MouseWheelHandler);
+
+        function MouseWheelHandler(e) {
+            mouse.x = e.pageX;
+            mouse.y = e.pageY;
+        }
     };
 
     Grid.prototype.calculateZoomPosition = function() {
-    var scrollX = window.innerWidth / (mouse.x / ZOOM);
-    var scrollY = window.innerHeight / (mouse.y / ZOOM);
+        var scrollX = window.innerWidth / (mouse.x / ZOOM);
+        var scrollY = window.innerHeight / (mouse.y / ZOOM);
 
-    window.scrollTo((VIEWPORT_WIDTH - (window.innerWidth )) / scrollX , ((VIEWPORT_HEIGHT - window.innerHeight) )/ scrollY );
-    mouse.x = 0;
-    mouse.y = 0 ;
+        window.scrollTo((VIEWPORT_WIDTH - (window.innerWidth )) / scrollX , ((VIEWPORT_HEIGHT - window.innerHeight) )/ scrollY );
+        mouse.x = 0;
+        mouse.y = 0 ;
 
     };
 
