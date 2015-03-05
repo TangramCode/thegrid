@@ -228,6 +228,7 @@ var Grid = function() {
     };
 
     Grid.prototype.install = function(){
+        
         window.onload = function() {
             onGridLoad();
             grid.calculateFontSize();
