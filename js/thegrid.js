@@ -1,4 +1,41 @@
 /**
+ * Created by Bartek on 2015-01-09.
+ */
+var CELL_FULL_WIDTH;
+
+var CELL_FULL_HEIGHT;
+
+var HORIZONTAL_RATIO = 2.37037;
+var VERTICAL_RATIO = 0.421875;
+
+var VIEWPORT_WIDTH;
+var VIEWPORT_HEIGHT;
+
+var ZOOM;
+
+function onGridLoad(){
+    var zoomFactor = 1;
+    if(window.devicePixelRatio !== undefined)
+        zoomFactor = window.devicePixelRatio;
+    else
+        zoomFactor = screen.deviceXDPI / screen.logicalXDPI;
+    if(zoomFactor < 1)
+        zoomFactor = 1;
+
+    ZOOM = zoomFactor;
+
+    VIEWPORT_WIDTH = zoomFactor * window.innerWidth;
+    VIEWPORT_HEIGHT = zoomFactor * window.innerHeight;
+
+    CELL_FULL_WIDTH = 8*zoomFactor; //vh
+    CELL_FULL_HEIGHT = 6*zoomFactor; //vw
+
+    console.log(8*zoomFactor);
+}
+
+onGridLoad(); //initial load
+
+/**
  * Created by Bartek on 2015-01-13.
  */
 
@@ -43,7 +80,7 @@ var GridElement = function(node){
         col_x = getAttribute("g-col-x");
         col_y = getAttribute("g-col-y");
         var temp_paddings = getAttributeOrDefault("g-paddings",  "0 0 0 0");
-        is_static = getAttributeOrDefault("static", true);
+        is_static = getAttributeOrDefault("static", false);
 
         if(temp_paddings){
             paddings = temp_paddings.split(" ");
@@ -73,27 +110,27 @@ var GridElement = function(node){
 
         if(gravity_x==="left") {
             var left = col_x * CELL_FULL_WIDTH;
-            node.style.left = Math.floor(left + horizontalGravityOffset)+"px";
+            node.style.left = Math.floor(left + horizontalGravityOffset)+"vw";
         }  else if(gravity_x==="right") {
             var right = (node.parentNode.getAttribute("g-cols") - col_x - 1) * CELL_FULL_WIDTH;
-            node.style.right = Math.ceil(right - horizontalGravityOffset)+"px";
+            node.style.right = Math.ceil(right - horizontalGravityOffset)+"vw";
         }else if(gravity_x === "center_horizontal"){
             var left = col_x * CELL_FULL_WIDTH - (width * CELL_FULL_WIDTH)/2;
-            node.style.left = Math.floor(left + horizontalGravityOffset)+"px";
+            node.style.left = Math.floor(left + horizontalGravityOffset)+"vw";
         }
     };
 
     var calculateVerticalGravity = function(verticalGravityOffset) {
         if(gravity_y === "top"){
             var top = col_y * CELL_FULL_HEIGHT;
-            node.style.top = Math.floor(top + verticalGravityOffset)+"px";
+            node.style.top = Math.floor(top + verticalGravityOffset)+"vh";
         }else if(gravity_y ==="bottom"){
             var bottom = (node.parentNode.getAttribute("g-rows") - col_y - 1) * CELL_FULL_HEIGHT;
-            node.style.bottom = Math.ceil(bottom - verticalGravityOffset)+"px";
+            node.style.bottom = Math.ceil(bottom - verticalGravityOffset)+"vh";
         }else if(gravity_y === "center_vertical"){
             var top = col_y * CELL_FULL_HEIGHT;
             top+= height * CELL_FULL_HEIGHT /2;
-            node.style.top = Math.floor(top + verticalGravityOffset)+"px";
+            node.style.top = Math.floor(top + verticalGravityOffset)+"vh";
         }
     };
 
@@ -138,7 +175,7 @@ var GridElement = function(node){
         var dimensions = {"newWidth":newWidth, "newHeight": newHeight,
              "horizontalGravityOffset": horizontalGravityOffset, "verticalGravityOffset":verticalGravityOffset, "widescreen":false};
 
-        if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT >= 2.37)
+        if((window.innerWidth / window.innerHeight) >= 16/9)
             dimensions.widescreen =  true;
         else
             dimensions.widescreen = false;
@@ -148,8 +185,8 @@ var GridElement = function(node){
             dimensions = calculateDynamicSnap(dimensions);
         }
 
-        node.style.width = Math.floor(dimensions.newWidth)+"px";
-        node.style.height = Math.floor(dimensions.newHeight)+"px";
+        node.style.width = Math.floor(dimensions.newWidth)+"vw";
+        node.style.height = Math.floor(dimensions.newHeight)+"vh";
 
         calculateHorizontalGravity(dimensions.horizontalGravityOffset);
         calculateVerticalGravity(dimensions.verticalGravityOffset);
@@ -160,10 +197,11 @@ var GridElement = function(node){
     var calculateDynamicDimensions = function(dimensions){
 
         if(dimensions.widescreen) {
-            dimensions.newWidth = CELL_FULL_HEIGHT*HORIZONTAL_RATIO*width;
-
+            var aspect = window.innerWidth / window.innerHeight;
+            dimensions.newWidth = 16/9*CELL_FULL_WIDTH/aspect*width;
         } else {
-            dimensions.newHeight = CELL_FULL_WIDTH*VERTICAL_RATIO*height;
+             var aspect = window.innerHeight / window.innerWidth;
+            dimensions.newHeight = 9/16* CELL_FULL_HEIGHT/aspect*height;
         }
         return dimensions;
     }
@@ -222,10 +260,10 @@ var Grid = function() {
     };
 
     Grid.prototype.calculateFontSize = function() {
-       if(CELL_FULL_WIDTH/CELL_FULL_HEIGHT < HORIZONTAL_RATIO) {
-         document.getElementsByTagName("html")[0].style.fontSize = VIEWPORT_WIDTH /136.6+"px";
+       if((window.innerWidth / window.innerHeight) >= 16/9) {
+        document.getElementsByTagName("html")[0].style.fontSize = VIEWPORT_HEIGHT /76.8+"px";
        } else {
-         document.getElementsByTagName("html")[0].style.fontSize = VIEWPORT_HEIGHT /76.8+"px";
+        document.getElementsByTagName("html")[0].style.fontSize = VIEWPORT_WIDTH /136.6+"px";
        }
     };
 
@@ -284,49 +322,4 @@ var Container = function(node) {
     };
 };
 
-/**
- * Created by Bartek on 2015-01-09.
- */
-var CELL_FULL_WIDTH;
-var CELL_HALF_OPEN_WIDTH;
-var CELL_OPEN_WIDTH;
 
-var CELL_FULL_HEIGHT;
-var CELL_HALF_OPEN_HEIGHT;
-var CELL_OPEN_HEIGHT;
-
-var GUTTER = 0.05;
-
-var HORIZONTAL_RATIO = 2.37037;
-var VERTICAL_RATIO = 0.421875;
-
-var VIEWPORT_WIDTH;
-var VIEWPORT_HEIGHT;
-
-var ZOOM;
-
-function onGridLoad(){
-    var zoomFactor = 1;
-    if(window.devicePixelRatio !== undefined)
-        zoomFactor = window.devicePixelRatio;
-    else
-        zoomFactor = screen.deviceXDPI / screen.logicalXDPI;
-    if(zoomFactor < 1)
-        zoomFactor = 1;
-
-    ZOOM = zoomFactor;
-
-    VIEWPORT_WIDTH = zoomFactor * window.innerWidth;
-    VIEWPORT_HEIGHT = zoomFactor * window.innerHeight;
-
-    CELL_FULL_WIDTH = VIEWPORT_WIDTH * 0.96 /12;
-    CELL_HALF_OPEN_WIDTH = CELL_FULL_WIDTH - (CELL_FULL_WIDTH) * GUTTER;
-    CELL_OPEN_WIDTH = CELL_HALF_OPEN_WIDTH - (CELL_FULL_WIDTH) * GUTTER;
-
-    CELL_FULL_HEIGHT = VIEWPORT_HEIGHT * 0.96 /16;
-    CELL_HALF_OPEN_HEIGHT = CELL_FULL_HEIGHT - (CELL_FULL_HEIGHT) * GUTTER;
-    CELL_OPEN_HEIGHT = CELL_HALF_OPEN_HEIGHT - (CELL_FULL_HEIGHT) * GUTTER;
-
-}
-
-onGridLoad(); //initial load
