@@ -376,7 +376,7 @@
 
 <!-- Add your site or application content here -->
 <div class="grid-container" g-cols="12" g-rows="17">
-     <div class="grid-element" g-width="7" g-height="1" g-col-x="0" g-col-y="0" 
+     <div class="grid-element static" g-width="7" g-height="1" g-col-x="0" g-col-y="0"
          g-paddings="0.5 0.5 0.5 0.5" static="true">
          <div class="breadcrumb-wrapper">
              <object class="o2-logo" type="image/svg+xml" data="img/o2img/logo.svg"></object>
@@ -386,7 +386,7 @@
              <span class="trash"></span>
          </div>
     </div>
-    <div class="grid-element settings" g-width="2" g-height="1" g-col-x="10" g-col-y="0" 
+    <div class="grid-element settings static" g-width="2" g-height="1" g-col-x="10" g-col-y="0"
          g-paddings="1 0.5 1 0" static="true">
          <div class="settings-wrapper">
              <object class="image" type="image/svg+xml" data="img/o2img/gear.svg"></object>
@@ -403,8 +403,7 @@
              </div>
          </div>
     </div>
-    <div class="grid-element search-box" g-width="4" g-height="1" g-col-x="4" g-col-y="1" 
-          >
+    <div class="grid-element search-box dynamic" g-width="4" g-height="1" g-col-x="4" g-col-y="1">
         
          <div class="search-wrapper">
              <div class="text">
@@ -414,14 +413,14 @@
              <div class="trash"></div>
          </div>
     </div>
-    <div class="grid-element year-picker" g-width="2" g-height="1" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal"
-          >
+
+    <div class="grid-element year-picker static" g-width="2" g-height="1" g-col-x="6" g-col-y="2" g-gravity="top|center_horizontal">
          <span class="arrow"><</span>
          <span class="date">Dec 2012</span>
          <span class="arrow">></span>
         <span class="trash"></span>
     </div>
-    <div class="grid-element chart" g-width="12" g-height="5" g-col-x="0" g-col-y="3" 
+    <div class="grid-element chart dynamic" g-width="12" g-height="5" g-col-x="0" g-col-y="3"
          g-paddings="0 6.5 0 6.5" >
           <div class="lines-container">
               <div class="lines-outer">
@@ -485,16 +484,16 @@
              </div>
          </div>
     </div>
-    <div class="grid-element chart-label" g-width="4" g-height="1" g-col-x="6" g-col-y="8" g-gravity="top|center_horizontal"
+    <div class="grid-element chart-label static" g-width="4" g-height="1" g-col-x="6" g-col-y="8" g-gravity="top|center_horizontal"
           static="true">
          <span>PO2 = $ Favorable Claims / $ Unfavorable Claims</span>
     </div>
-    <div class="grid-element" g-width="0.5" g-height="5" g-col-x="6" g-col-y="9" 
+    <div class="grid-element dynamic" g-width="0.5" g-height="5" g-col-x="6" g-col-y="9"
          g-paddings="2.7 0 5.3 0" g-dynamic-snap="center|left">
          <div class="line">
          </div>
     </div>
-    <div class="grid-element left-table" g-width="6" g-height="4" g-col-x="0" g-col-y="9" 
+    <div class="grid-element left-table dynamic" g-width="6" g-height="4" g-col-x="0" g-col-y="9"
          g-paddings="0 1 0 2.5" g-dynamic-snap="center|right">
         <table class="table-default ">
                     <tr>
@@ -575,7 +574,7 @@
 
         </table>
     </div>
-    <div class="grid-element right-table" g-width="6" g-height="4" g-col-x="6" g-col-y="9" 
+    <div class="grid-element right-table dynamic" g-width="6" g-height="4" g-col-x="6" g-col-y="9"
          g-paddings="0 2.5 0 1" g-dynamic-snap="center|left">
          <table class="table-default ">
                     <tr>
@@ -656,12 +655,12 @@
 
         </table>
     </div>
-    <div class="grid-element" g-width="6" g-height="1" g-col-x="0" g-col-y="13" 
+    <div class="grid-element dynamic" g-width="6" g-height="1" g-col-x="0" g-col-y="13"
          g-paddings="1 0 0 2.5" g-dynamic-snap="top|right">
          <span class="note text-small">Note: BPCI program parameters do not adjust for acuity and case-mix issues.
          </span>
     </div>
-    <div class="grid-element " g-width="2" g-height="1" g-col-x="6" g-col-y="14" g-gravity="top|center_horizontal"
+    <div class="grid-element dynamic" g-width="2" g-height="1" g-col-x="6" g-col-y="14" g-gravity="top|center_horizontal"
          g-paddings="0.5 2 0.5 2" >
          <div class="big-sense-button">
              <object class="image" type="image/svg+xml" data="img/o2img/data_point_blue.svg"></object>
@@ -671,7 +670,7 @@
              <div class="trash"></div>
          </div>
     </div>
-     <div class="grid-element dl-pdf" g-width="2" g-height="1" g-col-x="4" g-col-y="15" 
+     <div class="grid-element static dl-pdf" g-width="2" g-height="1" g-col-x="4" g-col-y="15"
          g-paddings="0 1 0.5 0"  static="true">
          <div class="relative-wrapper">
             <div class="download-container download-container-left">
@@ -682,7 +681,7 @@
              </div>
         </div>
     </div>
-    <div class="grid-element dl-excl" g-width="2" g-height="1" g-col-x="6" g-col-y="15" 
+    <div class="grid-element static dl-excl" g-width="2" g-height="1" g-col-x="6" g-col-y="15"
          g-paddings="0 0 0.5 1"  static="true">
         <div class="relative-wrapper">
             <div class="download-container">
