@@ -1,6 +1,4 @@
 /* THE GRID ESSENTIALS ===========================*/
-        @import url('http://fonts.googleapis.com/css?family=Open+Sans');
-        @import url('open-sans.extrabold.ttf');
         html {
             font-size: 10px ;
         }
@@ -11,7 +9,7 @@
             width: 100%;
             height: 100%;
             position: absolute;
-            font-family: 'Open Sans';
+
         }
 
         .grid-container {
