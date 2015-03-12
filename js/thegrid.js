@@ -56,10 +56,6 @@ var GridElement = function(node){
     var paddings = [0,0,0,0];
     var TOP = 0, RIGHT = 1, BOTTOM = 2, LEFT=3;
 
-    var getPixelValue = function(value) {
-        return parseInt(value.substring(0, value.length-2));
-    };
-
     var getGravity = function () {
         var gravity = getAttributeOrDefault("g-gravity","top|left");
         var res = gravity.split("|");
@@ -144,21 +140,23 @@ var GridElement = function(node){
         var paddingRight;
 
         if(widescreen) {
-           paddingTop = paddings[TOP]/100 *  VIEWPORT_HEIGHT;
-           paddingBottom = paddings[BOTTOM]/100 * VIEWPORT_HEIGHT;
-           paddingLeft = paddings[LEFT]/100 *  VIEWPORT_HEIGHT/9*16;
-           paddingRight = paddings[RIGHT]/100 *  VIEWPORT_HEIGHT/9*16;
+           var aspect = window.innerWidth / window.innerHeight;
+           paddingTop = paddings[TOP];
+           paddingBottom = paddings[BOTTOM];
+           paddingLeft = 16/9*paddings[LEFT]/aspect;
+           paddingRight = 16/9*paddings[RIGHT]/aspect;
         } else {
-           paddingTop = paddings[TOP]/100 * VIEWPORT_WIDTH/16*9;
-           paddingBottom = paddings[BOTTOM]/100 * VIEWPORT_WIDTH/16*9;
-           paddingLeft = paddings[LEFT]/100 * VIEWPORT_WIDTH;
-           paddingRight = paddings[RIGHT]/100 * VIEWPORT_WIDTH;
+           var aspect = window.innerHeight / window.innerWidth;
+           paddingTop = 9/16*paddings[TOP]/aspect;
+           paddingBottom = 9/16*paddings[BOTTOM]/aspect;
+           paddingLeft = paddings[LEFT];
+           paddingRight = paddings[RIGHT];
         }
 
-        node.style.paddingTop = paddingTop+"px";
-        node.style.paddingRight = paddingRight+"px";
-        node.style.paddingBottom = paddingBottom+"px";
-        node.style.paddingLeft = paddingLeft+"px";
+        node.style.paddingTop = paddingTop+"vh";
+        node.style.paddingRight = paddingRight+"vw";
+        node.style.paddingBottom = paddingBottom+"vh";
+        node.style.paddingLeft = paddingLeft+"vw";
     };
 
     var calculateDynamicDimensions = function(dimensions){
